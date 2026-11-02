@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zeyad M. Salem · QA Automation Engineer</title>
+  <meta name="description" content="Zeyad M. Salem, QA automation engineer and SDET. Automated tests from the database to the browser, run in CI. 2,900+ tests across production projects." />
+  <meta name="theme-color" content="#0f0d17" />
+  <meta property="og:title" content="Zeyad M. Salem · QA Automation Engineer" />
+  <meta property="og:description" content="Automated tests from the database to the browser, run in CI. 2,900+ tests, red-team security suites, pgTAP policy tests." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237C3AED'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="Zeyad M. Salem, home">
+        <span class="brand__mark" aria-hidden="true">✓</span>
+        <span>Zeyad<span class="muted">.salem</span></span>
+      </a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <nav id="nav-links" class="nav__links" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#approach">Approach</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="btn btn--small">Hire me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Open to remote part-time &amp; contract QA work</p>
+          <h1>I write tests that catch <span class="grad">real bugs</span>, from the database to the browser.</h1>
+          <p class="lead">
+            QA automation engineer and SDET. I test access control the way an attacker would,
+            prove row-level security with pgTAP, and run every suite in CI so nothing broken ships.
+          </p>
+          <div class="hero__cta">
+            <a class="btn" href="#work">See the test suites</a>
+            <a class="btn btn--ghost" href="mailto:zeyadmosalem@gmail.com">zeyadmosalem@gmail.com</a>
+          </div>
+          <ul class="socials" aria-label="Profiles">
+            <li><a href="https://github.com/Zeyadmosalem" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/zeyadmosalem/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="Zeyad_Salem_Resume_QA.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
+          </ul>
+        </div>
+
+        <figure class="term" aria-label="Example CI test run">
+          <div class="term__bar">
+            <span></span><span></span><span></span>
+            <p>ci / test · main</p>
+          </div>
+          <pre class="term__body" id="term"><code><span class="t-dim">$</span> npm run test:all
+<span class="t-ok">✓</span> nc-spark      <span class="t-dim">1,828 tests · 91% coverage</span>
+<span class="t-ok">✓</span> red-team      <span class="t-dim">privilege escalation blocked</span>
+<span class="t-ok">✓</span> samboza/pgtap <span class="t-dim">532 RLS policy tests</span>
+<span class="t-ok">✓</span> samboza/web   <span class="t-dim">578 front-end tests</span>
+<span class="t-ok">✓</span> migrations    <span class="t-dim">50/50 applied · deploy unblocked</span>
+
+<span class="t-pass">PASS</span> 2,938 tests  <span class="t-dim">· 0 failed</span>
+<span class="t-dim">$</span> <span class="caret"></span></code></pre>
+        </figure>
+      </div>
+
+      <div class="wrap">
+        <dl class="stats">
+          <div><dt>Automated tests in CI</dt><dd data-count="2900" data-suffix="+">2,900+</dd></div>
+          <div><dt>Statement coverage, NC Spark</dt><dd data-count="91" data-suffix="%">91%</dd></div>
+          <div><dt>pgTAP policy tests</dt><dd data-count="532">532</dd></div>
+          <div><dt>Hours a week available</dt><dd data-count="20">20</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="wrap about">
+        <div>
+          <p class="kicker">About</p>
+          <h2>Quality you can prove, not just hope for.</h2>
+        </div>
+        <div class="about__body">
+          <p>
+            I write automated tests that catch real bugs, from Postgres security policies up to the
+            browser, and I run them in CI so nothing broken ships.
+          </p>
+          <p>
+            I test access control the way an attacker would: red-team suites that try to escalate
+            privileges or read data a role shouldn't see, and fail the build if they succeed. Across
+            my projects, that's more than <strong>2,900 automated tests</strong> running on every push.
+          </p>
+          <p>
+            I also build the apps I test, in React, TypeScript and Supabase, so I can read the code,
+            find the root cause and write a bug report a developer can act on. I use AI coding tools
+            like Claude Code to move faster, while owning the test strategy and the quality.
+          </p>
+          <ul class="facts">
+            <li><span>Education</span> B.Sc. Computer Science, E-JUST · Dec 2027</li>
+            <li><span>Based in</span> Alexandria, Egypt · works remotely</li>
+            <li><span>Languages</span> Arabic (native), English (professional)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section section--alt">
+      <div class="wrap">
+        <p class="kicker">Featured work</p>
+        <h2>Test suites guarding real software.</h2>
+
+        <div class="projects">
+          <article class="card card--feature">
+            <header class="card__head">
+              <h3>NC Spark</h3>
+              <span class="tag">Compliance training platform</span>
+            </header>
+            <p class="card__claim">1,828 tests at 91% statement coverage, including red-team security suites.</p>
+            <ul class="bullets">
+              <li>Red-team suites try to escalate privileges and leak the quiz answer key, and fail the build if either works.</li>
+              <li>Tests prove three independent layers block escalation: column grants, row-level security and triggers.</li>
+              <li>Verified server-side grading against an answer key no browser role can read, reachable only from an Edge Function.</li>
+              <li>Tested a Cloudflare Worker access gate: session checks, sign-in throttling, CSP and HSTS headers.</li>
+              <li>XP, streaks and badges are tested to always agree with the append-only ledger they derive from.</li>
+            </ul>
+            <div class="metrics">
+              <span><b>1,828</b> tests</span><span><b>91%</b> coverage</span><span><b>39</b> migrations</span><span><b>14</b> Edge Functions</span>
+            </div>
+            <p class="stack">Vitest · GitHub Actions · React 19 · Supabase / Postgres 17 · Cloudflare Workers</p>
+            <a class="card__link" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">View repository →</a>
+          </article>
+
+          <article class="card">
+            <header class="card__head">
+              <h3>Samboza</h3>
+              <span class="tag tag--live">In production</span>
+            </header>
+            <p class="card__claim">532 pgTAP policy tests proving who can read and write which rows.</p>
+            <ul class="bullets">
+              <li>Bilingual Arabic/English finance PWA in daily use since September 2026.</li>
+              <li>Postgres row-level security, not the screen, enforces access across four roles.</li>
+              <li>CI runs 578 front-end tests on every push and blocks deploys until all 50 migrations are applied.</li>
+              <li>Covers a double-entry ledger, an audit trail and offline writes through an idempotent outbox.</li>
+            </ul>
+            <div class="metrics">
+              <span><b>532</b> pgTAP</span><span><b>578</b> front-end</span><span><b>50</b> migrations gated</span>
+            </div>
+            <p class="stack">pgTAP · Vitest · GitHub Actions · React 19 · TypeScript · Supabase</p>
+            <a class="card__link" href="https://github.com/Zeyadmosalem/Samboza" target="_blank" rel="noopener">View repository →</a>
+          </article>
+
+          <article class="card">
+            <header class="card__head">
+              <h3>Beyond Seen Mistakes</h3>
+              <span class="tag">Test &amp; CI contributor</span>
+            </header>
+            <p class="card__claim">I wrote the test suite and CI for a published research pipeline.</p>
+            <ul class="bullets">
+              <li>Data-loader, split-protocol, training edge-case and reproduction tests.</li>
+              <li>Fixed flaky reproduction checks by comparing results numerically instead of bit-for-bit, so they pass on every machine.</li>
+            </ul>
+            <p class="stack">Python · pytest · GitHub Actions</p>
+            <a class="card__link" href="https://github.com/AbdelrahmanAboegela/beyond-seen-mistakes/commits?author=Zeyadmosalem" target="_blank" rel="noopener">See my commits →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section id="approach" class="section">
+      <div class="wrap">
+        <p class="kicker">How I test</p>
+        <h2>Every layer, every push.</h2>
+        <ol class="layers">
+          <li>
+            <span class="layers__n">01</span>
+            <h3>Database</h3>
+            <p>pgTAP tests prove each role can read and write exactly the rows it should, and nothing more.</p>
+          </li>
+          <li>
+            <span class="layers__n">02</span>
+            <h3>Security</h3>
+            <p>Red-team suites act like an attacker: escalate privileges, read hidden data. If they succeed, the build fails.</p>
+          </li>
+          <li>
+            <span class="layers__n">03</span>
+            <h3>Server &amp; edge</h3>
+            <p>Edge Functions and Workers are tested for grading logic, session checks, throttling and security headers.</p>
+          </li>
+          <li>
+            <span class="layers__n">04</span>
+            <h3>UI</h3>
+            <p>Vitest and Testing Library cover components and flows the way a user actually uses them.</p>
+          </li>
+          <li>
+            <span class="layers__n">05</span>
+            <h3>CI gate</h3>
+            <p>GitHub Actions runs everything on every push, enforces coverage, and blocks deploys when the schema isn't current.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section section--alt">
+      <div class="wrap">
+        <p class="kicker">Skills</p>
+        <h2>Tools I use to break things on purpose.</h2>
+        <div class="skills">
+          <div>
+            <h3>Testing &amp; CI</h3>
+            <ul class="chips">
+              <li>Vitest</li><li>pgTAP</li><li>Testing Library</li><li>pytest</li><li>GitHub Actions</li>
+              <li>Red-team security tests</li><li>Coverage gates</li><li>Test planning</li><li>Bug reporting</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Languages</h3>
+            <ul class="chips">
+              <li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>Python</li><li>C++</li><li>Dart</li><li>HTML/CSS</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Apps under test</h3>
+            <ul class="chips">
+              <li>React</li><li>Vite</li><li>Supabase</li><li>PostgreSQL</li><li>Row-level security</li>
+              <li>Edge Functions</li><li>Cloudflare Workers</li><li>TanStack Query</li><li>PWAs</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Workflow</h3>
+            <ul class="chips">
+              <li>Git</li><li>Database migrations</li><li>Linux</li><li>AI-assisted development (Claude Code)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="extras">
+          <div class="extra">
+            <p class="kicker">Publication</p>
+            <p><strong>AraBIRD: A Modern Standard Arabic Adaptation of BIRD for Text-to-SQL over English Schemas.</strong>
+              Co-author. 2026 IEEE 8th NILES Conference (accepted).</p>
+          </div>
+          <div class="extra">
+            <p class="kicker">Training</p>
+            <p><strong>DEPI</strong> · Mobile App Development Intern, 2024</p>
+            <p><strong>ITI</strong> · iOS Development Intern (Swift), 2024</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="wrap contact__inner">
+        <p class="kicker">Contact</p>
+        <h2>Need tests that catch bugs before your users do?</h2>
+        <p class="lead">Available for remote part-time and contract QA automation work, up to 20 hours a week.</p>
+        <div class="hero__cta hero__cta--center">
+          <a class="btn" href="mailto:zeyadmosalem@gmail.com">Email me</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/zeyadmosalem/" target="_blank" rel="noopener">Message on LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p>© <span id="year">2026</span> Zeyad M. Salem</p>
+      <p><a href="https://github.com/Zeyadmosalem/portfolio" target="_blank" rel="noopener">Source code for this site on GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
