@@ -120,15 +120,21 @@
   };
 
   const ptr = { x: 0, y: 0, tx: 0, ty: 0, active: false, last: 0 };
-  const R = () => Math.min(58, Math.max(36, W * 0.11));
+  const R = () => Math.min(58, Math.max(30, W * 0.11));
   const col = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
   const draw = (t) => {
     ctx.clearRect(0, 0, W, H);
     const ring = R(), reach = ring * 2.3, time = t / 1000;
     if (!ptr.active || t - ptr.last > 4000) {
-      ptr.tx = W * (W * S < 960 ? 0.5 : 0.3) + Math.cos(time * 0.35) * W * 0.14;
-      ptr.ty = H * 0.5 + Math.sin(time * 0.5) * H * 0.24;
+      if (W * S < 960) {
+        // narrow screens: the text fills the top, so circle the skull below it
+        ptr.tx = W * 0.5 + Math.cos(time * 0.35) * W * 0.22;
+        ptr.ty = H * 0.84 + Math.sin(time * 0.5) * H * 0.06;
+      } else {
+        ptr.tx = W * 0.3 + Math.cos(time * 0.35) * W * 0.14;
+        ptr.ty = H * 0.5 + Math.sin(time * 0.5) * H * 0.24;
+      }
     }
     ptr.x += (ptr.tx - ptr.x) * 0.08;
     ptr.y += (ptr.ty - ptr.y) * 0.08;
