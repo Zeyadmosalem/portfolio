@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zeyad M. Salem · QA Automation Engineer</title>
   <meta name="description" content="Zeyad M. Salem, QA automation engineer and SDET. Automated tests from the database to the browser, run in CI. 2,900+ tests across production projects." />
-  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#0b0505" />
   <meta property="og:title" content="Zeyad M. Salem · QA Automation Engineer" />
   <meta property="og:description" content="Automated tests from the database to the browser, run in CI. 2,900+ tests, red-team security suites, pgTAP policy tests." />
   <meta property="og:type" content="website" />
@@ -15,7 +14,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="vendor/glisse/glisse.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
   <header class="nav">
     <div class="wrap nav__inner">
       <a class="brand" href="#top" aria-label="Zeyad M. Salem, back to top">
-        <picture><source srcset="assets/logo-dark.png" media="(prefers-color-scheme: light)" /><img src="assets/logo.png" alt="" width="28" height="28" /></picture>
+        <img class="px" src="assets/skull-px.png" alt="" width="28" height="28" />
         <span>Zeyad Salem</span>
       </a>
       <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
@@ -42,7 +42,7 @@
     <!-- HERO -->
     <section class="hero" id="top">
       <canvas class="field" aria-hidden="true"></canvas>
-      <div class="wrap hero__inner">
+      <div class="wrap hero__grid"><div class="hero__inner">
         <p class="label">QA automation engineer · SDET</p>
         <h1>I write tests that catch real bugs, from the database to the browser.</h1>
         <p class="lead">I test access control the way an attacker would, prove row-level security with pgTAP, and run every suite in CI so nothing broken ships.</p>
@@ -51,6 +51,11 @@
           <a class="pill" href="#contact">Get in touch</a>
         </div>
         <p class="status"><span class="status__dot" aria-hidden="true"></span>Available for remote part-time and contract work, up to 20 hours a week</p>
+      </div>
+      <div class="altar" aria-hidden="true">
+        <canvas class="altar__fx"></canvas>
+        <img class="altar__skull px" src="assets/skull-px.png" alt="" width="32" height="32" />
+      </div>
       </div>
     </section>
 
@@ -126,12 +131,14 @@
 
         <div class="apps">
           <article class="app">
-            <a class="app__shot" href="https://nc-spark.pages.dev" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-              <picture>
-                <source srcset="assets/apps/nc-spark-dashboard-dark.webp" media="(prefers-color-scheme: dark)" />
-                <img src="assets/apps/nc-spark-dashboard.webp" alt="" width="1200" height="750" loading="lazy" />
-              </picture>
-            </a>
+            <div class="app__shot app__gallery">
+              <img class="shot shot--main" src="assets/apps/nc-spark-dashboard.webp" data-glisse-big="assets/apps/nc-spark-dashboard.webp" rel="ncspark" title="Trainee dashboard" alt="NC Spark trainee dashboard" width="1200" height="750" loading="lazy" />
+              <div class="shot__row">
+                <img class="shot" src="assets/apps/nc-spark-course-builder.webp" data-glisse-big="assets/apps/nc-spark-course-builder.webp" rel="ncspark" title="Course builder" alt="NC Spark course builder" width="1200" height="750" loading="lazy" />
+                <img class="shot" src="assets/apps/nc-spark-dashboard-dark.webp" data-glisse-big="assets/apps/nc-spark-dashboard-dark.webp" rel="ncspark" title="Dashboard in dark mode" alt="NC Spark dashboard in dark mode" width="1200" height="750" loading="lazy" />
+              </div>
+              <span class="shot__hint">Click to enlarge</span>
+            </div>
             <div class="app__body">
               <div class="app__title">
                 <h3>NC Spark</h3>
@@ -237,7 +244,7 @@
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <p class="footer__brand"><picture><source srcset="assets/logo-dark.png" media="(prefers-color-scheme: light)" /><img src="assets/logo.png" alt="" width="20" height="20" /></picture>© <span id="year">2026</span> Zeyad M. Salem</p>
+      <p class="footer__brand"><img class="px" src="assets/skull-px.png" alt="" width="20" height="20" />© <span id="year">2026</span> Zeyad M. Salem</p>
       <nav class="footer__links" aria-label="Elsewhere">
         <a href="https://github.com/Zeyadmosalem" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/zeyadmosalem/" target="_blank" rel="noopener">LinkedIn</a>
@@ -247,6 +254,9 @@
   </footer>
 
   <div class="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/jquery-3.7.1.min.js"></script>
+  <script src="vendor/glisse/glisse.js"></script>
   <script src="script.js"></script>
+  <script type="module" src="fx.js"></script>
 </body>
 </html>

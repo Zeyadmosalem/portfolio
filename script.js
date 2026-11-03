@@ -1,7 +1,6 @@
 (() => {
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const hasIO = 'IntersectionObserver' in window;
 
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -34,20 +33,6 @@
     navLinks.forEach((a) => { const s = document.querySelector(a.hash); if (s) spy.observe(s); });
   }
 
-  /* ---------- Pill fill grows from the entry point ---------- */
-  document.querySelectorAll('.pill').forEach((el) => {
-    el.addEventListener('pointerenter', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--px', e.clientX - r.left + 'px');
-      el.style.setProperty('--py', e.clientY - r.top + 'px');
-    });
-    el.addEventListener('pointerleave', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--px', e.clientX - r.left + 'px');
-      el.style.setProperty('--py', e.clientY - r.top + 'px');
-    });
-  });
-
   /* ---------- Copy email ---------- */
   const toast = document.querySelector('.toast');
   let toastTimer;
@@ -72,12 +57,18 @@
       if (ok) {
         label.textContent = 'Copied';
         showToast('Email address copied');
+        document.dispatchEvent(new CustomEvent('px:burst', { detail: { el: btn } }));
         setTimeout(() => { label.textContent = 'Copy'; }, 2000);
       } else {
         showToast('Copy failed. The address is ' + text);
       }
     });
   });
+
+  /* ---------- Screenshot viewer (Glisse.js) ---------- */
+  if (window.jQuery && jQuery.fn.glisse) {
+    jQuery('.shot').glisse({ speed: 300, changeSpeed: 450, effect: 'roll', fullscreen: false });
+  }
 
   /* ---------- Reveal on scroll ---------- */
   if (!reduced && hasIO) {
@@ -100,105 +91,79 @@
   }
 
   /* ---------- Hero particle field ----------
-     Short dashes scattered over the hero. Near the pointer they turn to face it
-     and gather into a ring around it, then ease back home when it moves away. */
+     Drawn at a third of screen resolution and scaled up with hard edges, so every
+     particle is a chunky pixel. Near the pointer they turn to face it and gather
+     into a ring around it, then ease back home when it moves away. */
   const canvas = document.querySelector('.field');
   const hero = document.querySelector('.hero');
   const ctx = canvas.getContext('2d');
-  let W = 0, H = 0, dpr = 1, parts = [];
-  let inkRGB = '17,17,19', accentRGB = '109,40,217';
-
-  const readColors = () => {
-    const cs = getComputedStyle(root);
-    inkRGB = cs.getPropertyValue('--field-ink').trim() || inkRGB;
-    accentRGB = cs.getPropertyValue('--field-accent').trim() || accentRGB;
-  };
+  const S = 3;                    // screen pixels per art pixel
+  let W = 0, H = 0, parts = [];
+  const INK = [201, 170, 163], RED = [192, 40, 30], HOT = [240, 120, 80];
 
   const build = () => {
     const r = hero.getBoundingClientRect();
-    W = r.width; H = r.height;
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    // jittered grid gives an even, natural spread
-    const gap = W < 720 ? 34 : 40;
+    W = Math.ceil(r.width / S); H = Math.ceil(r.height / S);
+    canvas.width = W; canvas.height = H;
+    ctx.imageSmoothingEnabled = false;
+    const gap = r.width < 720 ? 11 : 13;
     parts = [];
     for (let y = gap / 2; y < H; y += gap) {
       for (let x = gap / 2; x < W; x += gap) {
         const hx = x + (Math.random() - 0.5) * gap * 0.9;
         const hy = y + (Math.random() - 0.5) * gap * 0.9;
-        parts.push({
-          hx, hy, x: hx, y: hy, vx: 0, vy: 0,
-          a: Math.random() * Math.PI * 2,
-          len: 3 + Math.random() * 4,
-          ph: Math.random() * Math.PI * 2,
-          sp: 0.4 + Math.random() * 0.6,
-          accent: Math.random() < 0.16,
-        });
+        parts.push({ hx, hy, x: hx, y: hy, vx: 0, vy: 0, a: Math.random() * Math.PI * 2,
+          len: 1 + (Math.random() * 2 | 0), ph: Math.random() * Math.PI * 2, sp: 0.4 + Math.random() * 0.6,
+          red: Math.random() < 0.2 });
       }
     }
   };
 
-  // pointer, smoothed; when idle it drifts on its own so the field never sits still
   const ptr = { x: 0, y: 0, tx: 0, ty: 0, active: false, last: 0 };
-  const R = () => Math.min(170, Math.max(110, W * 0.11));
+  const R = () => Math.min(58, Math.max(36, W * 0.11));
+  const col = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
   const draw = (t) => {
     ctx.clearRect(0, 0, W, H);
-    const ring = R();
-    const reach = ring * 2.3;
-    const time = t / 1000;
-
+    const ring = R(), reach = ring * 2.3, time = t / 1000;
     if (!ptr.active || t - ptr.last > 4000) {
-      // autopilot: slow loop over the right side of the hero
-      ptr.tx = W * (W < 720 ? 0.55 : 0.7) + Math.cos(time * 0.35) * W * 0.16;
-      ptr.ty = H * 0.5 + Math.sin(time * 0.5) * H * 0.22;
+      ptr.tx = W * (W * S < 960 ? 0.5 : 0.3) + Math.cos(time * 0.35) * W * 0.14;
+      ptr.ty = H * 0.5 + Math.sin(time * 0.5) * H * 0.24;
     }
     ptr.x += (ptr.tx - ptr.x) * 0.08;
     ptr.y += (ptr.ty - ptr.y) * 0.08;
 
     for (const p of parts) {
-      // gentle idle float around home
-      const fx = p.hx + Math.sin(time * p.sp + p.ph) * 4;
-      const fy = p.hy + Math.cos(time * p.sp * 0.8 + p.ph) * 4;
-
-      let dx = fx - ptr.x, dy = fy - ptr.y;
+      const fx = p.hx + Math.sin(time * p.sp + p.ph) * 1.4;
+      const fy = p.hy + Math.cos(time * p.sp * 0.8 + p.ph) * 1.4;
+      const dx = fx - ptr.x, dy = fy - ptr.y;
       const d = Math.hypot(dx, dy) || 0.001;
       let w = 1 - d / reach;
-      w = w > 0 ? w * w * (3 - 2 * w) : 0; // smoothstep
-
+      w = w > 0 ? w * w * (3 - 2 * w) : 0;
       let tx = fx, ty = fy;
       if (w > 0) {
-        const ux = dx / d, uy = dy / d;
-        // squeeze distances toward the ring radius, with a slow swirl
-        const rr = ring + (d - ring) * 0.28;
-        const sw = w * 0.35 + time * 0.15 * w;
-        const cs = Math.cos(sw), sn = Math.sin(sw);
-        const rx = ux * cs - uy * sn, ry = ux * sn + uy * cs;
-        tx = fx + (ptr.x + rx * rr - fx) * w;
-        ty = fy + (ptr.y + ry * rr - fy) * w;
+        const ux = dx / d, uy = dy / d, rr = ring + (d - ring) * 0.28;
+        const sw = w * 0.35 + time * 0.15 * w, cs = Math.cos(sw), sn = Math.sin(sw);
+        tx = fx + (ptr.x + (ux * cs - uy * sn) * rr - fx) * w;
+        ty = fy + (ptr.y + (ux * sn + uy * cs) * rr - fy) * w;
       }
-
       p.vx = (p.vx + (tx - p.x) * 0.055) * 0.84;
       p.vy = (p.vy + (ty - p.y) * 0.055) * 0.84;
       p.x += p.vx; p.y += p.vy;
 
-      // orientation: face the pointer when close, drift with a slow flow when far
       const faceA = Math.atan2(p.y - ptr.y, p.x - ptr.x);
-      const flowA = p.ph + Math.sin(time * 0.2 + p.hx * 0.004) * 0.6;
+      const flowA = p.ph + Math.sin(time * 0.2 + p.hx * 0.012) * 0.6;
       let da = (w > 0 ? faceA : flowA) - p.a;
       da = Math.atan2(Math.sin(da), Math.cos(da));
       p.a += da * (0.08 + w * 0.15);
 
-      const L = p.len * (1 + w * 1.4);
-      const alpha = 0.14 + w * 0.7;
-      const ca = Math.cos(p.a) * L * 0.5, sa = Math.sin(p.a) * L * 0.5;
-      ctx.strokeStyle = `rgba(${p.accent ? accentRGB : inkRGB},${p.accent ? Math.min(1, alpha + 0.15) : alpha})`;
-      ctx.lineWidth = 1.6;
-      ctx.beginPath();
-      ctx.moveTo(p.x - ca, p.y - sa);
-      ctx.lineTo(p.x + ca, p.y + sa);
-      ctx.stroke();
+      // a short run of whole pixels along the angle
+      const L = p.len + Math.round(w * 2);
+      const c = w > 0.55 ? HOT : p.red || w > 0.15 ? RED : INK;
+      ctx.fillStyle = col(c, 0.22 + w * 0.75);
+      const ox = Math.round(p.x), oy = Math.round(p.y);
+      const sx = Math.cos(p.a), sy = Math.sin(p.a);
+      for (let i = 0; i < L; i++) ctx.fillRect(Math.round(ox + sx * i), Math.round(oy + sy * i), 1, 1);
     }
   };
 
@@ -207,9 +172,8 @@
   const start = () => { if (!running) { running = true; raf = requestAnimationFrame(loop); } };
   const stop = () => { running = false; cancelAnimationFrame(raf); };
 
-  readColors();
   build();
-  ptr.x = ptr.tx = W * 0.7; ptr.y = ptr.ty = H * 0.5;
+  ptr.x = ptr.tx = W * 0.3; ptr.y = ptr.ty = H * 0.5;
 
   if (reduced) {
     // one calm frame, no movement
@@ -217,7 +181,7 @@
   } else {
     hero.addEventListener('pointermove', (e) => {
       const r = hero.getBoundingClientRect();
-      ptr.tx = e.clientX - r.left; ptr.ty = e.clientY - r.top;
+      ptr.tx = (e.clientX - r.left) / S; ptr.ty = (e.clientY - r.top) / S;
       ptr.active = true; ptr.last = performance.now();
     }, { passive: true });
     hero.addEventListener('pointerleave', () => { ptr.active = false; });
@@ -233,7 +197,5 @@
     clearTimeout(resizeT);
     resizeT = setTimeout(() => { build(); if (reduced) draw(0); }, 150);
   });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { readColors(); if (reduced) draw(0); });
 
-  void finePointer;
 })();
