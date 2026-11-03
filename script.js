@@ -1,28 +1,19 @@
 (() => {
   const root = document.documentElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const hasIO = 'IntersectionObserver' in window;
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Nav ---------- */
   const nav = document.querySelector('.nav');
   const toggle = document.querySelector('.nav__toggle');
   const links = document.getElementById('nav-links');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const canObserve = 'IntersectionObserver' in window;
-  const fmt = new Intl.NumberFormat('en-US');
-
-  if (!reduced && canObserve) root.classList.add('js');
-
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Sticky nav border + scroll progress bar
-  const onScroll = () => {
-    nav.classList.toggle('is-scrolled', window.scrollY > 8);
-    const max = root.scrollHeight - window.innerHeight;
-    root.style.setProperty('--p', max > 0 ? (window.scrollY / max).toFixed(4) : 0);
-  };
+  const onScroll = () => nav.classList.toggle('is-scrolled', scrollY > 10);
   onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('scroll', onScroll, { passive: true });
 
-  // Mobile menu
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!open));
@@ -33,135 +24,216 @@
     if (e.target.closest('a') && links.classList.contains('is-open')) toggle.click();
   });
 
-  // Logo wiggle when clicked (nav + contact)
-  const brand = document.querySelector('.brand');
-  const wiggle = () => {
-    brand.classList.remove('is-wiggling');
-    void brand.offsetWidth;
-    brand.classList.add('is-wiggling');
-  };
-  brand.addEventListener('animationend', () => brand.classList.remove('is-wiggling'));
-  const contactLogo = document.querySelector('.contact__logo');
-  if (contactLogo) contactLogo.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); wiggle(); });
-
-  // Active nav link for the section in view
-  if (canObserve) {
-    const navLinks = [...links.querySelectorAll('a[href^="#"]:not(.btn)')];
-    const sections = navLinks.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (hasIO) {
+    const navLinks = [...links.querySelectorAll('a[href^="#"]:not(.pill)')];
     const spy = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id));
+      entries.forEach((en) => {
+        if (en.isIntersecting) navLinks.forEach((a) => a.classList.toggle('is-active', a.hash === '#' + en.target.id));
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach((s) => spy.observe(s));
+    navLinks.forEach((a) => { const s = document.querySelector(a.hash); if (s) spy.observe(s); });
   }
 
-  // Terminal: wrap each line so it can "type" in
-  const code = document.querySelector('#term code');
-  const lines = code.innerHTML.split('\n');
-  code.innerHTML = lines.map((l) => `<span class="ln">${l || ' '}</span>`).join('');
+  /* ---------- Pill fill grows from the entry point ---------- */
+  document.querySelectorAll('.pill').forEach((el) => {
+    el.addEventListener('pointerenter', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--px', e.clientX - r.left + 'px');
+      el.style.setProperty('--py', e.clientY - r.top + 'px');
+    });
+    el.addEventListener('pointerleave', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--px', e.clientX - r.left + 'px');
+      el.style.setProperty('--py', e.clientY - r.top + 'px');
+    });
+  });
 
-  if (reduced || !canObserve) return;
-
-  // ---- Motion from here on ----
-
-  // Cursor glow
-  if (finePointer) {
-    let raf = 0;
-    window.addEventListener('pointermove', (e) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        root.style.setProperty('--mx', e.clientX + 'px');
-        root.style.setProperty('--my', e.clientY + 'px');
-      });
-    }, { passive: true });
-  }
-
-  // Terminal lines appear one by one, then the PASS count ticks up
-  const lnEls = [...code.querySelectorAll('.ln')];
-  const passCount = document.getElementById('pass-count');
-  const passTarget = 2938;
-  passCount.textContent = '0';
-  const countTo = (el, end, dur, suffix = '', done) => {
-    const start = performance.now();
-    const step = (now) => {
-      const p = Math.min((now - start) / dur, 1);
-      el.textContent = fmt.format(Math.round(end * (1 - Math.pow(1 - p, 3)))) + suffix;
-      if (p < 1) requestAnimationFrame(step); else if (done) done();
-    };
-    requestAnimationFrame(step);
+  /* ---------- Copy email ---------- */
+  const toast = document.querySelector('.toast');
+  let toastTimer;
+  const showToast = (msg) => {
+    toast.textContent = msg;
+    toast.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('is-on'), 2200);
   };
-  lnEls.forEach((ln, i) => {
-    setTimeout(() => {
-      ln.classList.add('on');
-      if (ln.contains(passCount)) {
-        countTo(passCount, passTarget, 900, '', () => {
-          const badge = ln.querySelector('.t-pass');
-          if (badge) badge.classList.add('pop');
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { ok = document.execCommand('copy'); } catch { ok = false; }
+        ta.remove();
+      }
+      const label = btn.querySelector('[data-copy-label]');
+      if (ok) {
+        label.textContent = 'Copied';
+        showToast('Email address copied');
+        setTimeout(() => { label.textContent = 'Copy'; }, 2000);
+      } else {
+        showToast('Copy failed. The address is ' + text);
+      }
+    });
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  if (!reduced && hasIO) {
+    root.classList.add('motion');
+    const els = document.querySelectorAll('.section__head, .work__item, .app, .steps li, .facts div, .about > p, .contact__card, .numbers__grid div');
+    els.forEach((el) => {
+      el.classList.add('reveal');
+      const sibs = [...el.parentElement.children].filter((c) => c.classList.contains('reveal'));
+      el.style.transitionDelay = Math.min(sibs.indexOf(el), 5) * 70 + 'ms';
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-in');
+        en.target.addEventListener('transitionend', () => { en.target.style.transitionDelay = ''; }, { once: true });
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => io.observe(el));
+  }
+
+  /* ---------- Hero particle field ----------
+     Short dashes scattered over the hero. Near the pointer they turn to face it
+     and gather into a ring around it, then ease back home when it moves away. */
+  const canvas = document.querySelector('.field');
+  const hero = document.querySelector('.hero');
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, dpr = 1, parts = [];
+  let inkRGB = '17,17,19', accentRGB = '109,40,217';
+
+  const readColors = () => {
+    const cs = getComputedStyle(root);
+    inkRGB = cs.getPropertyValue('--field-ink').trim() || inkRGB;
+    accentRGB = cs.getPropertyValue('--field-accent').trim() || accentRGB;
+  };
+
+  const build = () => {
+    const r = hero.getBoundingClientRect();
+    W = r.width; H = r.height;
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // jittered grid gives an even, natural spread
+    const gap = W < 720 ? 34 : 40;
+    parts = [];
+    for (let y = gap / 2; y < H; y += gap) {
+      for (let x = gap / 2; x < W; x += gap) {
+        const hx = x + (Math.random() - 0.5) * gap * 0.9;
+        const hy = y + (Math.random() - 0.5) * gap * 0.9;
+        parts.push({
+          hx, hy, x: hx, y: hy, vx: 0, vy: 0,
+          a: Math.random() * Math.PI * 2,
+          len: 3 + Math.random() * 4,
+          ph: Math.random() * Math.PI * 2,
+          sp: 0.4 + Math.random() * 0.6,
+          accent: Math.random() < 0.16,
         });
       }
-    }, 900 + i * 260);
-  });
+    }
+  };
 
-  // Reveal on scroll
-  const targets = document.querySelectorAll('.section h2, .card, .layers li, .skills > div, .extra, .about__body, .kicker');
-  targets.forEach((el) => el.classList.add('reveal'));
-  // Staggered children
-  document.querySelectorAll('.chips, .bullets, .facts, .metrics').forEach((list) => {
-    list.classList.add('stagger');
-    [...list.children].forEach((c, i) => c.style.setProperty('--i', i));
-  });
-  // Stagger sibling cards / layers
-  document.querySelectorAll('.layers li, .projects .card').forEach((el, i, all) => {
-    const idx = [...el.parentElement.children].indexOf(el);
-    el.style.transitionDelay = idx * 90 + 'ms';
-  });
+  // pointer, smoothed; when idle it drifts on its own so the field never sits still
+  const ptr = { x: 0, y: 0, tx: 0, ty: 0, active: false, last: 0 };
+  const R = () => Math.min(170, Math.max(110, W * 0.11));
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      entry.target.querySelectorAll('.stagger').forEach((s) => s.classList.add('is-visible'));
-      if (entry.target.classList.contains('stagger')) entry.target.classList.add('is-visible');
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-  targets.forEach((el) => io.observe(el));
-  document.querySelectorAll('.stagger').forEach((el) => io.observe(el));
+  const draw = (t) => {
+    ctx.clearRect(0, 0, W, H);
+    const ring = R();
+    const reach = ring * 2.3;
+    const time = t / 1000;
 
-  // Clear the reveal delay once a card is in, so hover feels instant
-  document.querySelectorAll('.projects .card, .layers li').forEach((el) => {
-    el.addEventListener('transitionend', () => { el.style.transitionDelay = ''; }, { once: true });
-  });
+    if (!ptr.active || t - ptr.last > 4000) {
+      // autopilot: slow loop over the right side of the hero
+      ptr.tx = W * (W < 720 ? 0.55 : 0.7) + Math.cos(time * 0.35) * W * 0.16;
+      ptr.ty = H * 0.5 + Math.sin(time * 0.5) * H * 0.22;
+    }
+    ptr.x += (ptr.tx - ptr.x) * 0.08;
+    ptr.y += (ptr.ty - ptr.y) * 0.08;
 
-  // Count-up stats
-  const countIo = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      countTo(el, Number(el.dataset.count), 1200, el.dataset.suffix || '');
-      countIo.unobserve(el);
-    });
-  }, { threshold: 0.6 });
-  document.querySelectorAll('[data-count]').forEach((el) => countIo.observe(el));
+    for (const p of parts) {
+      // gentle idle float around home
+      const fx = p.hx + Math.sin(time * p.sp + p.ph) * 4;
+      const fy = p.hy + Math.cos(time * p.sp * 0.8 + p.ph) * 4;
 
-  // Card tilt + spotlight following the pointer
-  if (finePointer) {
-    document.querySelectorAll('[data-tilt]').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width;
-        const y = (e.clientY - r.top) / r.height;
-        card.style.setProperty('--cx', x * 100 + '%');
-        card.style.setProperty('--cy', y * 100 + '%');
-        card.style.setProperty('--ry', ((x - 0.5) * 6).toFixed(2) + 'deg');
-        card.style.setProperty('--rx', ((0.5 - y) * 6).toFixed(2) + 'deg');
-      });
-      card.addEventListener('pointerleave', () => {
-        card.style.setProperty('--rx', '0deg');
-        card.style.setProperty('--ry', '0deg');
-      });
-    });
+      let dx = fx - ptr.x, dy = fy - ptr.y;
+      const d = Math.hypot(dx, dy) || 0.001;
+      let w = 1 - d / reach;
+      w = w > 0 ? w * w * (3 - 2 * w) : 0; // smoothstep
+
+      let tx = fx, ty = fy;
+      if (w > 0) {
+        const ux = dx / d, uy = dy / d;
+        // squeeze distances toward the ring radius, with a slow swirl
+        const rr = ring + (d - ring) * 0.28;
+        const sw = w * 0.35 + time * 0.15 * w;
+        const cs = Math.cos(sw), sn = Math.sin(sw);
+        const rx = ux * cs - uy * sn, ry = ux * sn + uy * cs;
+        tx = fx + (ptr.x + rx * rr - fx) * w;
+        ty = fy + (ptr.y + ry * rr - fy) * w;
+      }
+
+      p.vx = (p.vx + (tx - p.x) * 0.055) * 0.84;
+      p.vy = (p.vy + (ty - p.y) * 0.055) * 0.84;
+      p.x += p.vx; p.y += p.vy;
+
+      // orientation: face the pointer when close, drift with a slow flow when far
+      const faceA = Math.atan2(p.y - ptr.y, p.x - ptr.x);
+      const flowA = p.ph + Math.sin(time * 0.2 + p.hx * 0.004) * 0.6;
+      let da = (w > 0 ? faceA : flowA) - p.a;
+      da = Math.atan2(Math.sin(da), Math.cos(da));
+      p.a += da * (0.08 + w * 0.15);
+
+      const L = p.len * (1 + w * 1.4);
+      const alpha = 0.14 + w * 0.7;
+      const ca = Math.cos(p.a) * L * 0.5, sa = Math.sin(p.a) * L * 0.5;
+      ctx.strokeStyle = `rgba(${p.accent ? accentRGB : inkRGB},${p.accent ? Math.min(1, alpha + 0.15) : alpha})`;
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(p.x - ca, p.y - sa);
+      ctx.lineTo(p.x + ca, p.y + sa);
+      ctx.stroke();
+    }
+  };
+
+  let raf = 0, running = false;
+  const loop = (t) => { draw(t); raf = requestAnimationFrame(loop); };
+  const start = () => { if (!running) { running = true; raf = requestAnimationFrame(loop); } };
+  const stop = () => { running = false; cancelAnimationFrame(raf); };
+
+  readColors();
+  build();
+  ptr.x = ptr.tx = W * 0.7; ptr.y = ptr.ty = H * 0.5;
+
+  if (reduced) {
+    // one calm frame, no movement
+    draw(0);
+  } else {
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      ptr.tx = e.clientX - r.left; ptr.ty = e.clientY - r.top;
+      ptr.active = true; ptr.last = performance.now();
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => { ptr.active = false; });
+
+    if (hasIO) {
+      new IntersectionObserver(([en]) => (en.isIntersecting ? start() : stop())).observe(hero);
+    } else start();
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
   }
+
+  let resizeT;
+  addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { build(); if (reduced) draw(0); }, 150);
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { readColors(); if (reduced) draw(0); });
+
+  void finePointer;
 })();

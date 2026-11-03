@@ -6,11 +6,11 @@ A static site with no build step: plain HTML, CSS and JavaScript.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Page content: hero, about, featured test suites, approach, skills, contact |
-| `styles.css` | Styles, with dark and light themes that follow the system setting |
-| `script.js` | Mobile menu, terminal typing, scroll reveals, count-ups, card tilt, cursor glow (all off with reduced motion) |
+| `index.html` | Page content: hero, numbers, work, try-the-apps, approach, about, contact |
+| `styles.css` | Styles, light and dark themes that follow the system setting |
+| `script.js` | Hero particle field, pill hover fill, copy-email, scroll reveals, mobile menu (motion off with reduced motion) |
 | `Zeyad_Salem_Resume_QA.pdf` | Resume linked from the hero |
-| `assets/` | Skull logo (light and dark versions), favicons and touch icon |
+| `assets/` | Skull logo (light and dark versions), favicons and touch icon; `assets/apps/` holds app screenshots |
 
 ## Run locally
 
