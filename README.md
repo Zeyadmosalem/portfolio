@@ -10,7 +10,7 @@ A static site with no build step: plain HTML, CSS and JavaScript.
 | `styles.css` | Styles, with dark and light themes that follow the system setting |
 | `script.js` | Mobile menu, terminal typing, scroll reveals, count-ups, card tilt, cursor glow (all off with reduced motion) |
 | `Zeyad_Salem_Resume_QA.pdf` | Resume linked from the hero |
-| `assets/` | Logo, favicons and touch icon |
+| `assets/` | Skull logo (light and dark versions), favicons and touch icon |
 
 ## Run locally
 

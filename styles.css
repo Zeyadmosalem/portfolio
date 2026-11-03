@@ -236,7 +236,7 @@ strong { color: var(--text); }
 .progress {
   position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 100;
   transform-origin: 0 50%; transform: scaleX(var(--p, 0));
-  background: linear-gradient(90deg, var(--accent), #c084fc, #e0424f);
+  background: linear-gradient(90deg, var(--accent), #c084fc, var(--accent-3));
 }
 
 /* cursor glow */
@@ -252,7 +252,7 @@ strong { color: var(--text); }
 .brand:hover .brand__logo { transform: rotate(-14deg) scale(1.12); }
 .brand.is-wiggling .brand__logo { animation: wiggle .7s ease; }
 @keyframes wiggle { 20%{transform:rotate(-18deg)} 40%{transform:rotate(14deg)} 60%{transform:rotate(-9deg)} 80%{transform:rotate(5deg)} }
-.contact__logo { display: block; margin: 0 auto 24px; width: 120px; height: 120px; animation: float 5s ease-in-out infinite; filter: drop-shadow(0 18px 30px rgba(224,66,79,.35)); cursor: pointer; }
+.contact__logo { display: block; margin: 0 auto 24px; width: 120px; height: 120px; animation: float 5s ease-in-out infinite; filter: drop-shadow(0 18px 30px color-mix(in srgb, var(--accent) 45%, transparent)); cursor: pointer; }
 .contact__logo:hover { animation-play-state: paused; }
 @keyframes float { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-12px) rotate(3deg); } }
 .footer__brand { display: flex; align-items: center; gap: 8px; }
