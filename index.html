@@ -9,19 +9,23 @@
   <meta property="og:title" content="Zeyad M. Salem · QA Automation Engineer" />
   <meta property="og:description" content="Automated tests from the database to the browser, run in CI. 2,900+ tests, red-team security suites, pgTAP policy tests." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237C3AED'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="nav" id="top">
     <div class="wrap nav__inner">
       <a class="brand" href="#top" aria-label="Zeyad M. Salem, home">
-        <span class="brand__mark" aria-hidden="true">✓</span>
+        <img class="brand__logo" src="assets/logo.png" alt="" width="34" height="34" />
         <span>Zeyad<span class="muted">.salem</span></span>
       </a>
       <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
@@ -41,7 +45,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap hero__grid">
-        <div class="hero__text">
+        <div class="hero__text intro">
           <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Open to remote part-time &amp; contract QA work</p>
           <h1>I write tests that catch <span class="grad">real bugs</span>, from the database to the browser.</h1>
           <p class="lead">
@@ -71,7 +75,7 @@
 <span class="t-ok">✓</span> samboza/web   <span class="t-dim">578 front-end tests</span>
 <span class="t-ok">✓</span> migrations    <span class="t-dim">50/50 applied · deploy unblocked</span>
 
-<span class="t-pass">PASS</span> 2,938 tests  <span class="t-dim">· 0 failed</span>
+<span class="t-pass">PASS</span> <span id="pass-count">2,938</span> tests  <span class="t-dim">· 0 failed</span>
 <span class="t-dim">$</span> <span class="caret"></span></code></pre>
         </figure>
       </div>
@@ -83,6 +87,12 @@
           <div><dt>pgTAP policy tests</dt><dd data-count="532">532</dd></div>
           <div><dt>Hours a week available</dt><dd data-count="20">20</dd></div>
         </dl>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Vitest</span><span>pgTAP</span><span>GitHub Actions</span><span>Row-level security</span><span>Red-team tests</span><span>Testing Library</span><span>pytest</span><span>Coverage gates</span><span>Supabase</span><span>Cloudflare Workers</span>
+          <span>Vitest</span><span>pgTAP</span><span>GitHub Actions</span><span>Row-level security</span><span>Red-team tests</span><span>Testing Library</span><span>pytest</span><span>Coverage gates</span><span>Supabase</span><span>Cloudflare Workers</span>
+        </div>
       </div>
     </section>
 
@@ -124,7 +134,7 @@
         <h2>Test suites guarding real software.</h2>
 
         <div class="projects">
-          <article class="card card--feature">
+          <article data-tilt class="card card--feature">
             <header class="card__head">
               <h3>NC Spark</h3>
               <span class="tag">Compliance training platform</span>
@@ -144,7 +154,7 @@
             <a class="card__link" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">View repository →</a>
           </article>
 
-          <article class="card">
+          <article data-tilt class="card">
             <header class="card__head">
               <h3>Samboza</h3>
               <span class="tag tag--live">In production</span>
@@ -163,7 +173,7 @@
             <a class="card__link" href="https://github.com/Zeyadmosalem/Samboza" target="_blank" rel="noopener">View repository →</a>
           </article>
 
-          <article class="card">
+          <article data-tilt class="card">
             <header class="card__head">
               <h3>Beyond Seen Mistakes</h3>
               <span class="tag">Test &amp; CI contributor</span>
@@ -267,6 +277,7 @@
     <!-- CONTACT -->
     <section id="contact" class="section contact">
       <div class="wrap contact__inner">
+        <img class="contact__logo" src="assets/logo.png" alt="Zeyad's skull logo" width="120" height="120" />
         <p class="kicker">Contact</p>
         <h2>Need tests that catch bugs before your users do?</h2>
         <p class="lead">Available for remote part-time and contract QA automation work, up to 20 hours a week.</p>
@@ -280,7 +291,7 @@
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <p>© <span id="year">2026</span> Zeyad M. Salem</p>
+      <p class="footer__brand"><img src="assets/logo.png" alt="" width="22" height="22" /> © <span id="year">2026</span> Zeyad M. Salem</p>
       <p><a href="https://github.com/Zeyadmosalem/portfolio" target="_blank" rel="noopener">Source code for this site on GitHub</a></p>
     </div>
   </footer>

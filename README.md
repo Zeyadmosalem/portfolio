@@ -8,8 +8,9 @@ A static site with no build step: plain HTML, CSS and JavaScript.
 | --- | --- |
 | `index.html` | Page content: hero, about, featured test suites, approach, skills, contact |
 | `styles.css` | Styles, with dark and light themes that follow the system setting |
-| `script.js` | Mobile menu, scroll reveal and stat count-up (respects reduced motion) |
+| `script.js` | Mobile menu, terminal typing, scroll reveals, count-ups, card tilt, cursor glow (all off with reduced motion) |
 | `Zeyad_Salem_Resume_QA.pdf` | Resume linked from the hero |
+| `assets/` | Logo, favicons and touch icon |
 
 ## Run locally
 
