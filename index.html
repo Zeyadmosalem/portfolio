@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zeyad M. Salem · QA Automation Engineer</title>
+  <meta name="description" content="Zeyad M. Salem, QA automation engineer and SDET. Automated tests from the database to the browser, run in CI. 2,900+ tests across production projects." />
+  <meta name="theme-color" content="#0b0505" />
+  <meta property="og:title" content="Zeyad M. Salem · QA Automation Engineer" />
+  <meta property="og:description" content="Automated tests from the database to the browser, run in CI. 2,900+ tests, red-team security suites, pgTAP policy tests." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="vendor/glisse/glisse.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="Zeyad M. Salem, back to top">
+        <img class="px" src="assets/skull-px.png" alt="" width="28" height="28" />
+        <span>Zeyad Salem</span>
+      </a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
+      <nav id="nav-links" class="nav__links" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#apps">Apps</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="pill pill--dark">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <canvas class="field" aria-hidden="true"></canvas>
+      <div class="wrap hero__grid"><div class="hero__inner">
+        <p class="label">QA automation engineer · SDET</p>
+        <h1>I write tests that catch real bugs, from the database to the browser.</h1>
+        <p class="lead">I test access control the way an attacker would, prove row-level security with pgTAP, and run every suite in CI so nothing broken ships.</p>
+        <div class="actions">
+          <a class="pill pill--dark" href="#work">See the work <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="pill" href="#contact">Get in touch</a>
+        </div>
+        <p class="status"><span class="status__dot" aria-hidden="true"></span>Available for remote part-time and contract work, up to 20 hours a week</p>
+      </div>
+      <div class="altar" aria-hidden="true">
+        <canvas class="altar__fx"></canvas>
+        <img class="altar__skull px" src="assets/skull-px.png" alt="" width="32" height="32" />
+      </div>
+      </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <section class="numbers" aria-label="At a glance">
+      <div class="wrap">
+        <dl class="numbers__grid">
+          <div><dd>2,900+</dd><dt>automated tests running in CI</dt></div>
+          <div><dd>91%</dd><dt>statement coverage on NC Spark</dt></div>
+          <div><dd>532</dd><dt>pgTAP row-level security tests</dt></div>
+          <div><dd>50</dd><dt>migrations gated before deploy</dt></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="label">Selected work</p>
+          <h2>Test suites guarding real software</h2>
+        </header>
+
+        <ol class="work">
+          <li class="work__item">
+            <a class="work__link" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">
+              <span class="work__index">01</span>
+              <div class="work__main">
+                <h3>NC Spark</h3>
+                <p class="work__claim">1,828 tests at 91% statement coverage, including red-team security suites.</p>
+                <p class="work__body">A compliance training platform with four portals. The red-team suites try to escalate privileges and leak the quiz answer key, and fail the build if either works. The tests prove that column grants, row-level security and triggers each block escalation on their own.</p>
+                <p class="work__meta">Vitest · GitHub Actions · Supabase / Postgres 17 · Cloudflare Workers</p>
+              </div>
+              <span class="work__go">Repository <span class="arrow" aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li class="work__item">
+            <a class="work__link" href="https://github.com/Zeyadmosalem/Samboza" target="_blank" rel="noopener">
+              <span class="work__index">02</span>
+              <div class="work__main">
+                <h3>Samboza <span class="tag">In production</span></h3>
+                <p class="work__claim">532 pgTAP policy tests proving who can read and write which rows.</p>
+                <p class="work__body">A bilingual Arabic/English finance app in daily use since September 2026. Postgres row-level security, not the screen, enforces access across four roles. CI runs 578 front-end tests on every push and blocks the deploy until all 50 migrations are applied.</p>
+                <p class="work__meta">pgTAP · Vitest · GitHub Actions · React 19 · TypeScript · Supabase</p>
+              </div>
+              <span class="work__go">Repository <span class="arrow" aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li class="work__item">
+            <a class="work__link" href="https://github.com/AbdelrahmanAboegela/beyond-seen-mistakes/commits?author=Zeyadmosalem" target="_blank" rel="noopener">
+              <span class="work__index">03</span>
+              <div class="work__main">
+                <h3>Beyond Seen Mistakes</h3>
+                <p class="work__claim">The test suite and CI for a published research pipeline.</p>
+                <p class="work__body">Data-loader, split-protocol, training edge-case and reproduction tests. I made the reproduction checks compare results numerically instead of bit-for-bit, so they pass on every machine.</p>
+                <p class="work__meta">Python · pytest · GitHub Actions</p>
+              </div>
+              <span class="work__go">My commits <span class="arrow" aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- APPS -->
+    <section id="apps" class="section section--tint">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="label">Try the apps</p>
+          <h2>The apps behind the tests</h2>
+          <p class="section__sub">I build the software I test. Open them and look around.</p>
+        </header>
+
+        <div class="apps">
+          <article class="app">
+            <div class="app__shot app__gallery">
+              <img class="shot shot--main" src="assets/apps/nc-spark-dashboard.webp" data-glisse-big="assets/apps/nc-spark-dashboard.webp" rel="ncspark" title="Trainee dashboard" alt="NC Spark trainee dashboard" width="1200" height="750" loading="lazy" />
+              <div class="shot__row">
+                <img class="shot" src="assets/apps/nc-spark-course-builder.webp" data-glisse-big="assets/apps/nc-spark-course-builder.webp" rel="ncspark" title="Course builder" alt="NC Spark course builder" width="1200" height="750" loading="lazy" />
+                <img class="shot" src="assets/apps/nc-spark-dashboard-dark.webp" data-glisse-big="assets/apps/nc-spark-dashboard-dark.webp" rel="ncspark" title="Dashboard in dark mode" alt="NC Spark dashboard in dark mode" width="1200" height="750" loading="lazy" />
+              </div>
+              <span class="shot__hint">Click to enlarge</span>
+            </div>
+            <div class="app__body">
+              <div class="app__title">
+                <h3>NC Spark</h3>
+                <span class="tag tag--live">Live demo</span>
+              </div>
+              <p>Compliance training for warehouse teams: courses, quizzes graded on the server, XP and badges. Sign in as a trainee and take a course.</p>
+              <div class="actions">
+                <a class="pill pill--dark" href="https://nc-spark.pages.dev" target="_blank" rel="noopener">Open NC Spark <span class="arrow" aria-hidden="true">↗</span></a>
+                <a class="pill" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="app">
+            <div class="app__shot app__shot--private" aria-hidden="true">
+              <img src="assets/apps/samboza-icon.png" alt="" width="96" height="96" loading="lazy" />
+            </div>
+            <div class="app__body">
+              <div class="app__title">
+                <h3>Samboza</h3>
+                <span class="tag">Private</span>
+              </div>
+              <p>A household finance app with a double-entry ledger, Arabic and English, and offline writes. It holds a real family's money, so it isn't open to the public. I'm happy to walk you through it on a call.</p>
+              <div class="actions">
+                <a class="pill pill--dark" href="mailto:zeyadmosalem@gmail.com?subject=Samboza%20walkthrough">Ask for a walkthrough</a>
+                <a class="pill" href="https://github.com/Zeyadmosalem/Samboza" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section id="approach" class="section">
+      <div class="wrap split">
+        <header class="section__head">
+          <p class="label">How I test</p>
+          <h2>Every layer, on every push</h2>
+        </header>
+        <ol class="steps">
+          <li><span>Database</span><p>pgTAP tests prove each role can read and write exactly the rows it should, and nothing more.</p></li>
+          <li><span>Security</span><p>Red-team suites try to escalate privileges and read hidden data. If they succeed, the build fails.</p></li>
+          <li><span>Server and edge</span><p>Edge Functions and Workers are tested for grading logic, session checks, throttling and security headers.</p></li>
+          <li><span>Interface</span><p>Vitest and Testing Library cover components and flows the way a person actually uses them.</p></li>
+          <li><span>CI gate</span><p>GitHub Actions runs everything, enforces coverage, and blocks the deploy when the schema isn't current.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section section--tint">
+      <div class="wrap split">
+        <header class="section__head">
+          <p class="label">About</p>
+          <h2>Quality you can prove</h2>
+        </header>
+        <div class="about">
+          <p>I'm a Computer Science student at E-JUST in Alexandria, Egypt, graduating in December 2027. I write automated tests that catch real bugs and run them in CI, across more than 2,900 tests in my projects.</p>
+          <p>I also build the apps I test, in React, TypeScript and Supabase, so I can read the code, find the root cause and write a bug report a developer can act on. I use AI coding tools like Claude Code to move faster, while owning the test strategy and the quality.</p>
+
+          <dl class="facts">
+            <div><dt>Testing and CI</dt><dd>Vitest, pgTAP, Testing Library, pytest, GitHub Actions, red-team security tests, coverage gates, test planning, bug reporting</dd></div>
+            <div><dt>Languages</dt><dd>TypeScript, JavaScript, SQL, Python, C++, Dart, HTML/CSS</dd></div>
+            <div><dt>Apps under test</dt><dd>React, Vite, Supabase, PostgreSQL row-level security, Edge Functions, Cloudflare Workers, TanStack Query, PWAs</dd></div>
+            <div><dt>Publication</dt><dd>Co-author, "AraBIRD: A Modern Standard Arabic Adaptation of BIRD for Text-to-SQL over English Schemas," IEEE NILES 2026 (accepted)</dd></div>
+            <div><dt>Training</dt><dd>DEPI, Mobile App Development Intern, 2024 · ITI, iOS Development Intern (Swift), 2024</dd></div>
+            <div><dt>Spoken</dt><dd>Arabic (native), English (professional)</dd></div>
+          </dl>
+          <a class="textlink" href="Zeyad_Salem_Resume_QA.pdf" target="_blank" rel="noopener">Download resume (PDF) <span class="arrow" aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="wrap">
+        <p class="label">Contact</p>
+        <h2 class="contact__title">Need tests that catch bugs before your users do?</h2>
+
+        <div class="contact__grid">
+          <div class="contact__card">
+            <p class="contact__kind">Email</p>
+            <p class="contact__value" id="email-address">zeyadmosalem@gmail.com</p>
+            <div class="actions">
+              <a class="pill pill--dark" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeyadmosalem@gmail.com&amp;su=Hello%20Zeyad" target="_blank" rel="noopener">Write in Gmail <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="pill" href="mailto:zeyadmosalem@gmail.com?subject=Hello%20Zeyad">Mail app</a>
+              <button class="pill" type="button" data-copy="zeyadmosalem@gmail.com"><span data-copy-label>Copy</span></button>
+            </div>
+          </div>
+          <div class="contact__card">
+            <p class="contact__kind">LinkedIn</p>
+            <p class="contact__value">in/zeyadmosalem</p>
+            <div class="actions">
+              <a class="pill pill--dark" href="https://www.linkedin.com/in/zeyadmosalem/" target="_blank" rel="noopener">Open my profile <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+            <p class="contact__note">Message me from my profile, or send a connection request with a note.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="footer__brand"><img class="px" src="assets/skull-px.png" alt="" width="20" height="20" />© <span id="year">2026</span> Zeyad M. Salem</p>
+      <nav class="footer__links" aria-label="Elsewhere">
+        <a href="https://github.com/Zeyadmosalem" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/zeyadmosalem/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Zeyadmosalem/portfolio" target="_blank" rel="noopener">Source for this site</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/jquery-3.7.1.min.js"></script>
+  <script src="vendor/glisse/glisse.js"></script>
+  <script src="script.js?v=3"></script>
+  <script type="module" src="fx.js?v=3"></script>
+</body>
+</html>
