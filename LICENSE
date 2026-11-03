@@ -1,0 +1,42 @@
+MIT License
+
+Copyright (c) 2026 Zeyad Salem
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+Scope of this license
+
+The MIT license above covers the site's code: index.html, styles.css,
+script.js and fx.js.
+
+It does NOT cover Zeyad Salem's personal content, which is
+Copyright (c) 2026 Zeyad Salem, all rights reserved:
+  - the skull logo and the files made from it (assets/logo.png,
+    assets/skull-px*.png, the favicons and apple-touch-icon)
+  - the resume (Zeyad_Salem_Resume_QA.pdf)
+  - the project screenshots and icons in assets/apps/
+  - the written text about Zeyad, his projects and his experience
+
+Third-party code in vendor/ keeps its own license:
+  - pixelfx: MIT, see vendor/pixelfx/LICENSE and vendor/pixelfx/NOTICE.md
+  - jQuery 3.7.1: MIT, (c) OpenJS Foundation and other contributors
+  - Glisse.js 1.1.1 by Victor Coulon: published without a license file;
+    included as-is with credit, and not relicensed here
