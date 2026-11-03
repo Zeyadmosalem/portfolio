@@ -132,3 +132,9 @@ GitHub Pages: **Settings → Pages → Deploy from a branch → `main` / `(root)
 - [Glisse.js](https://github.com/Victa/Glisse.js) by Victor Coulon.
 - [jQuery](https://jquery.com/), MIT.
 - Fonts: Pixelify Sans and Silkscreen, SIL Open Font License, via Google Fonts.
+
+## License
+
+The code (`index.html`, `styles.css`, `script.js`, `fx.js`) is [MIT](LICENSE): reuse it freely, just keep the copyright notice.
+
+Personal content is **not** covered and stays all rights reserved: the skull logo and favicons, the resume PDF, the screenshots in `assets/apps/`, and the written text about me and my work. Libraries in `vendor/` keep their own licenses. See [LICENSE](LICENSE) for the full scope.
