@@ -5,7 +5,7 @@
 <h1 align="center">Zeyad M. Salem · portfolio</h1>
 
 <p align="center">
-  QA automation engineer / SDET. A one-page portfolio in dark red pixel art.<br />
+  Full-stack developer. A one-page portfolio in dark red pixel art.<br />
   <a href="https://zeyadmosalem.github.io/portfolio/"><b>zeyadmosalem.github.io/portfolio</b></a>
 </p>
 
@@ -27,11 +27,11 @@
 ## Project layout
 
 ```
-index.html                 the page: hero, numbers, work, try the apps, approach, about, contact
+index.html                 the page: hero, numbers, work, try the apps, how I build, about, contact
 styles.css                 the whole pixel-art theme
 script.js                  nav, copy-email, scroll reveals, Glisse setup, the hero particle field
 fx.js                      pixelfx effects (ES module)
-Zeyad_Salem_Resume_QA.pdf  resume linked from the About section
+Zeyad_Salem_Resume.pdf     resume linked from the About section
 assets/
   skull-px.png             32×32 pixel skull logo (scaled up with image-rendering: pixelated)
   favicon-*.png            favicons and the apple-touch icon
@@ -46,7 +46,7 @@ vendor/
 
 ### 1. Content first
 
-The copy comes from my resume and GitHub profile README, written for QA automation roles: what each test suite proves, with real numbers (2,900+ tests, 91% coverage, 532 pgTAP policy tests). The page leads with the work and keeps everything else short.
+The copy comes from my resume and GitHub profile README, written for full-stack roles: what each app does and how it is secured and tested, with real numbers (2,900+ tests, 91% coverage, 532 pgTAP policy tests). The page leads with the work and keeps everything else short.
 
 ### 2. Three design passes
 
