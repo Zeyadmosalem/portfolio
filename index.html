@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zeyad M. Salem · QA Automation Engineer</title>
-  <meta name="description" content="Zeyad M. Salem, QA automation engineer and SDET. Automated tests from the database to the browser, run in CI. 2,900+ tests across production projects." />
+  <title>Zeyad M. Salem · Full-Stack Developer</title>
+  <meta name="description" content="Zeyad M. Salem, full-stack developer. Secure, well-tested web apps end to end in React, TypeScript and Supabase/Postgres, backed by 2,900+ automated tests in CI." />
   <meta name="theme-color" content="#0b0505" />
-  <meta property="og:title" content="Zeyad M. Salem · QA Automation Engineer" />
-  <meta property="og:description" content="Automated tests from the database to the browser, run in CI. 2,900+ tests, red-team security suites, pgTAP policy tests." />
+  <meta property="og:title" content="Zeyad M. Salem · Full-Stack Developer" />
+  <meta property="og:description" content="Secure, well-tested web apps end to end. React, TypeScript, Supabase/Postgres, with 2,900+ automated tests in CI." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
@@ -31,7 +31,7 @@
       <nav id="nav-links" class="nav__links" aria-label="Main">
         <a href="#work">Work</a>
         <a href="#apps">Apps</a>
-        <a href="#approach">Approach</a>
+        <a href="#approach">How I build</a>
         <a href="#about">About</a>
         <a href="#contact" class="pill pill--dark">Contact</a>
       </nav>
@@ -43,14 +43,14 @@
     <section class="hero" id="top">
       <canvas class="field" aria-hidden="true"></canvas>
       <div class="wrap hero__grid"><div class="hero__inner">
-        <p class="label">QA automation engineer · SDET</p>
-        <h1>I write tests that catch real bugs, from the database to the browser.</h1>
-        <p class="lead">I test access control the way an attacker would, prove row-level security with pgTAP, and run every suite in CI so nothing broken ships.</p>
+        <p class="label">Full-stack developer · React · TypeScript · Supabase</p>
+        <h1>I build secure, well-tested web apps, end to end.</h1>
+        <p class="lead">From the first requirements call and the database design to a product people use every day. I enforce access in Postgres, keep sensitive logic on the server, and run every test in CI before anything ships.</p>
         <div class="actions">
           <a class="pill pill--dark" href="#work">See the work <span class="arrow" aria-hidden="true">→</span></a>
           <a class="pill" href="#contact">Get in touch</a>
         </div>
-        <p class="status"><span class="status__dot" aria-hidden="true"></span>Available for remote part-time and contract work, up to 20 hours a week</p>
+        <p class="status"><span class="status__dot" aria-hidden="true"></span>Available for remote freelance and part-time work, up to 20 hours a week</p>
       </div>
       <div class="altar" aria-hidden="true">
         <canvas class="altar__fx"></canvas>
@@ -63,10 +63,10 @@
     <section class="numbers" aria-label="At a glance">
       <div class="wrap">
         <dl class="numbers__grid">
+          <div><dd>2</dd><dt>full-stack apps shipped end to end</dt></div>
+          <div><dd>5</dd><dt>daily users on Samboza since Sep 2026</dt></div>
           <div><dd>2,900+</dd><dt>automated tests running in CI</dt></div>
-          <div><dd>91%</dd><dt>statement coverage on NC Spark</dt></div>
-          <div><dd>532</dd><dt>pgTAP row-level security tests</dt></div>
-          <div><dd>50</dd><dt>migrations gated before deploy</dt></div>
+          <div><dd>89</dd><dt>database migrations shipped</dt></div>
         </dl>
       </div>
     </section>
@@ -76,7 +76,7 @@
       <div class="wrap">
         <header class="section__head">
           <p class="label">Selected work</p>
-          <h2>Test suites guarding real software</h2>
+          <h2>Apps I built, from database to deploy</h2>
         </header>
 
         <ol class="work">
@@ -85,9 +85,9 @@
               <span class="work__index">01</span>
               <div class="work__main">
                 <h3>NC Spark</h3>
-                <p class="work__claim">1,828 tests at 91% statement coverage, including red-team security suites.</p>
-                <p class="work__body">A compliance training platform with four portals. The red-team suites try to escalate privileges and leak the quiz answer key, and fail the build if either works. The tests prove that column grants, row-level security and triggers each block escalation on their own.</p>
-                <p class="work__meta">Vitest · GitHub Actions · Supabase / Postgres 17 · Cloudflare Workers</p>
+                <p class="work__claim">A role-based training platform with four portals and server-side grading.</p>
+                <p class="work__body">Trainee, trainer, supervisor and admin portals with seven activity types, all authored in the browser. Quizzes are graded in Edge Functions against an answer key no browser role can read, and column grants, row-level security and triggers block privilege escalation. A Cloudflare Worker gates the site, throttles sign-ins and sets security headers. 1,828 tests at 91% coverage, including red-team suites.</p>
+                <p class="work__meta">React 19 · Vite · Supabase / Postgres 17 · Edge Functions · TanStack Query · Cloudflare Workers · Vitest</p>
               </div>
               <span class="work__go">Repository <span class="arrow" aria-hidden="true">↗</span></span>
             </a>
@@ -97,9 +97,9 @@
               <span class="work__index">02</span>
               <div class="work__main">
                 <h3>Samboza <span class="tag">In production</span></h3>
-                <p class="work__claim">532 pgTAP policy tests proving who can read and write which rows.</p>
-                <p class="work__body">A bilingual Arabic/English finance app in daily use since September 2026. Postgres row-level security, not the screen, enforces access across four roles. CI runs 578 front-end tests on every push and blocks the deploy until all 50 migrations are applied.</p>
-                <p class="work__meta">pgTAP · Vitest · GitHub Actions · React 19 · TypeScript · Supabase</p>
+                <p class="work__claim">A bilingual Arabic/English finance app, used daily since September 2026.</p>
+                <p class="work__body">An installable PWA with a full right-to-left layout, a double-entry ledger with an audit trail, offline writes through an idempotent outbox, and Excel export. I ran the whole cycle: user interviews, data model, security review, tests and deploy. Postgres row-level security enforces access across four roles, proven by 532 pgTAP tests plus 578 front-end tests in CI.</p>
+                <p class="work__meta">React 19 · TypeScript · Vite · Supabase / Postgres · Cloudflare Workers · GitHub Actions</p>
               </div>
               <span class="work__go">Repository <span class="arrow" aria-hidden="true">↗</span></span>
             </a>
@@ -125,8 +125,8 @@
       <div class="wrap">
         <header class="section__head">
           <p class="label">Try the apps</p>
-          <h2>The apps behind the tests</h2>
-          <p class="section__sub">I build the software I test. Open them and look around.</p>
+          <h2>Open them and look around</h2>
+          <p class="section__sub">Real apps, not mockups. One is public, one holds a real family's money.</p>
         </header>
 
         <div class="apps">
@@ -176,15 +176,15 @@
     <section id="approach" class="section">
       <div class="wrap split">
         <header class="section__head">
-          <p class="label">How I test</p>
-          <h2>Every layer, on every push</h2>
+          <p class="label">How I build</p>
+          <h2>Every layer, end to end</h2>
         </header>
         <ol class="steps">
-          <li><span>Database</span><p>pgTAP tests prove each role can read and write exactly the rows it should, and nothing more.</p></li>
-          <li><span>Security</span><p>Red-team suites try to escalate privileges and read hidden data. If they succeed, the build fails.</p></li>
-          <li><span>Server and edge</span><p>Edge Functions and Workers are tested for grading logic, session checks, throttling and security headers.</p></li>
-          <li><span>Interface</span><p>Vitest and Testing Library cover components and flows the way a person actually uses them.</p></li>
-          <li><span>CI gate</span><p>GitHub Actions runs everything, enforces coverage, and blocks the deploy when the schema isn't current.</p></li>
+          <li><span>Requirements</span><p>I talk to the people who will use the app and turn what they need into a data model and a plan.</p></li>
+          <li><span>Database</span><p>Postgres schema, migrations and row-level security, so each role reads and writes exactly the rows it should.</p></li>
+          <li><span>Server and edge</span><p>Sensitive logic lives in Edge Functions and Cloudflare Workers: grading, session checks, throttling and security headers.</p></li>
+          <li><span>Interface</span><p>React and TypeScript interfaces in Arabic and English, right-to-left included, that work offline as installable PWAs.</p></li>
+          <li><span>Test and ship</span><p>Automated tests at every layer run in GitHub Actions, and the deploy is blocked until everything passes.</p></li>
         </ol>
       </div>
     </section>
@@ -194,21 +194,22 @@
       <div class="wrap split">
         <header class="section__head">
           <p class="label">About</p>
-          <h2>Quality you can prove</h2>
+          <h2>Build. Test. Ship.</h2>
         </header>
         <div class="about">
-          <p>I'm a Computer Science student at E-JUST in Alexandria, Egypt, graduating in December 2027. I write automated tests that catch real bugs and run them in CI, across more than 2,900 tests in my projects.</p>
-          <p>I also build the apps I test, in React, TypeScript and Supabase, so I can read the code, find the root cause and write a bug report a developer can act on. I use AI coding tools like Claude Code to move faster, while owning the test strategy and the quality.</p>
+          <p>I'm a full-stack developer and Computer Science student at E-JUST in Alexandria, Egypt, graduating in December 2027. I build web apps end to end in React, TypeScript and Supabase, with one in daily use since September 2026.</p>
+          <p>Testing is how I make sure they hold up: more than 2,900 automated tests across my projects, including red-team suites that try to break access control on purpose. I use AI coding tools like Claude Code to move faster, while owning the architecture, the decisions and the quality.</p>
 
           <dl class="facts">
-            <div><dt>Testing and CI</dt><dd>Vitest, pgTAP, Testing Library, pytest, GitHub Actions, red-team security tests, coverage gates, test planning, bug reporting</dd></div>
             <div><dt>Languages</dt><dd>TypeScript, JavaScript, SQL, Python, C++, Dart, HTML/CSS</dd></div>
-            <div><dt>Apps under test</dt><dd>React, Vite, Supabase, PostgreSQL row-level security, Edge Functions, Cloudflare Workers, TanStack Query, PWAs</dd></div>
+            <div><dt>Front end</dt><dd>React, Vite, Tailwind CSS, TanStack Query, offline-first PWAs, right-to-left (Arabic) interfaces</dd></div>
+            <div><dt>Back end and data</dt><dd>Supabase (Postgres, row-level security, Edge Functions, Realtime), Cloudflare Workers, Node.js, database migrations</dd></div>
+            <div><dt>Testing and DevOps</dt><dd>Vitest, pgTAP, Testing Library, pytest, red-team security tests, GitHub Actions CI/CD, Git</dd></div>
             <div><dt>Publication</dt><dd>Co-author, "AraBIRD: A Modern Standard Arabic Adaptation of BIRD for Text-to-SQL over English Schemas," IEEE NILES 2026 (accepted)</dd></div>
             <div><dt>Training</dt><dd>DEPI, Mobile App Development Intern, 2024 · ITI, iOS Development Intern (Swift), 2024</dd></div>
             <div><dt>Spoken</dt><dd>Arabic (native), English (professional)</dd></div>
           </dl>
-          <a class="textlink" href="Zeyad_Salem_Resume_QA.pdf" target="_blank" rel="noopener">Download resume (PDF) <span class="arrow" aria-hidden="true">↓</span></a>
+          <a class="textlink" href="Zeyad_Salem_Resume.pdf" target="_blank" rel="noopener">Download resume (PDF) <span class="arrow" aria-hidden="true">↓</span></a>
         </div>
       </div>
     </section>
@@ -217,7 +218,7 @@
     <section id="contact" class="section contact">
       <div class="wrap">
         <p class="label">Contact</p>
-        <h2 class="contact__title">Need tests that catch bugs before your users do?</h2>
+        <h2 class="contact__title">Have an app to build? Let's talk.</h2>
 
         <div class="contact__grid">
           <div class="contact__card">
