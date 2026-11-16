@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zeyad M. Salem · Full-Stack Developer</title>
-  <meta name="description" content="Zeyad M. Salem, full-stack developer. Secure, well-tested web apps end to end in React, TypeScript and Supabase/Postgres, backed by 2,900+ automated tests in CI." />
+  <meta name="description" content="Zeyad M. Salem, full-stack developer. Business web apps for Egyptian and Arabic-market companies: ETA e-invoicing, accounting tools and Arabic PDF data extraction, backed by 3,500+ automated tests in CI." />
   <meta name="theme-color" content="#0b0505" />
   <meta property="og:title" content="Zeyad M. Salem · Full-Stack Developer" />
-  <meta property="og:description" content="Secure, well-tested web apps end to end. React, TypeScript, Supabase/Postgres, with 2,900+ automated tests in CI." />
+  <meta property="og:description" content="Business web apps for Egyptian companies: ETA e-invoicing, accounting tools and Arabic PDFs to clean data. React, Postgres, Django, 3,500+ tests in CI." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
@@ -43,9 +43,9 @@
     <section class="hero" id="top">
       <canvas class="field" aria-hidden="true"></canvas>
       <div class="wrap hero__grid"><div class="hero__inner">
-        <p class="label">Full-stack developer · React · TypeScript · Supabase</p>
-        <h1>I build secure, well-tested web apps, end to end.</h1>
-        <p class="lead">From the first requirements call and the database design to a product people use every day. I enforce access in Postgres, keep sensitive logic on the server, and run every test in CI before anything ships.</p>
+        <p class="label">Full-stack developer · React · Postgres · Django</p>
+        <h1>I build business apps for Egyptian companies, end to end.</h1>
+        <p class="lead">ETA e-invoicing, accounting back offices and client portals, and pipelines that turn Arabic and English PDFs into clean, checked data. I enforce access in the database, keep sensitive logic on the server, and run every test in CI before anything ships.</p>
         <div class="actions">
           <a class="pill pill--dark" href="#work">See the work <span class="arrow" aria-hidden="true">→</span></a>
           <a class="pill" href="#contact">Get in touch</a>
@@ -63,9 +63,9 @@
     <section class="numbers" aria-label="At a glance">
       <div class="wrap">
         <dl class="numbers__grid">
-          <div><dd>2</dd><dt>full-stack apps shipped end to end</dt></div>
+          <div><dd>2</dd><dt>client projects for Egyptian businesses</dt></div>
           <div><dd>5</dd><dt>daily users on Samboza since Sep 2026</dt></div>
-          <div><dd>2,900+</dd><dt>automated tests running in CI</dt></div>
+          <div><dd>3,500+</dd><dt>automated tests running in CI</dt></div>
           <div><dd>89</dd><dt>database migrations shipped</dt></div>
         </dl>
       </div>
@@ -77,12 +77,37 @@
         <header class="section__head">
           <p class="label">Selected work</p>
           <h2>Apps I built, from database to deploy</h2>
+          <p class="section__sub">The first two are client projects in private repositories, so they link to a walkthrough instead of the code.</p>
         </header>
 
         <ol class="work">
           <li class="work__item">
-            <a class="work__link" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">
+            <a class="work__link" href="mailto:zeyadmosalem@gmail.com?subject=E-invoicing%20system%20walkthrough">
               <span class="work__index">01</span>
+              <div class="work__main">
+                <h3>Accounting &amp; e-invoicing system <span class="tag">Client project</span></h3>
+                <p class="work__claim">A back office and client portal for an Egyptian accounting and tax firm.</p>
+                <p class="work__body">Accountants keep the general ledger, financial statements, VAT returns, payroll and company formation work; the firm's clients sign in to issue e-invoices and track their filings. It integrates with the Egyptian Tax Authority (ETA) to submit, sync, cancel and reject e-invoices and receipts, and builds VAT sheets in ETA's official format. Per-department staff permissions, two-factor sign-in and a full audit log. About 600 tests in CI; co-developed with one other engineer.</p>
+                <p class="work__meta">Python · Django · PostgreSQL · ETA e-invoicing API · Arabic RTL interface</p>
+              </div>
+              <span class="work__go">Ask for a walkthrough <span class="arrow" aria-hidden="true">→</span></span>
+            </a>
+          </li>
+          <li class="work__item">
+            <a class="work__link" href="mailto:zeyadmosalem@gmail.com?subject=Extraction%20pipeline%20walkthrough">
+              <span class="work__index">02</span>
+              <div class="work__main">
+                <h3>Financial statements pipeline <span class="tag">Client project</span></h3>
+                <p class="work__claim">Turns Egyptian Exchange filings into data a benchmarking platform can import.</p>
+                <p class="work__body">It finds and downloads companies' annual reports, locates the balance sheet, income statement and cash flow pages, reads them from the PDF text layer with an OCR fallback for scans (Arabic-Indic digits included), maps every printed line to the platform's codes, and checks the totals add up before anything is staged for human review. Built to the client's brief so it moves into their backend without a rewrite. About 100 tests, including a hand-checked gold set of real filings.</p>
+                <p class="work__meta">Python · Pydantic · pdfplumber · Tesseract OCR · PostgreSQL</p>
+              </div>
+              <span class="work__go">Ask for a walkthrough <span class="arrow" aria-hidden="true">→</span></span>
+            </a>
+          </li>
+          <li class="work__item">
+            <a class="work__link" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">
+              <span class="work__index">03</span>
               <div class="work__main">
                 <h3>NC Spark</h3>
                 <p class="work__claim">A role-based training platform with four portals and server-side grading.</p>
@@ -94,7 +119,7 @@
           </li>
           <li class="work__item">
             <a class="work__link" href="https://github.com/Zeyadmosalem/Samboza" target="_blank" rel="noopener">
-              <span class="work__index">02</span>
+              <span class="work__index">04</span>
               <div class="work__main">
                 <h3>Samboza <span class="tag">In production</span></h3>
                 <p class="work__claim">A bilingual Arabic/English finance app, used daily since September 2026.</p>
@@ -106,7 +131,7 @@
           </li>
           <li class="work__item">
             <a class="work__link" href="https://github.com/AbdelrahmanAboegela/beyond-seen-mistakes/commits?author=Zeyadmosalem" target="_blank" rel="noopener">
-              <span class="work__index">03</span>
+              <span class="work__index">05</span>
               <div class="work__main">
                 <h3>Beyond Seen Mistakes</h3>
                 <p class="work__claim">The test suite and CI for a published research pipeline.</p>
@@ -182,7 +207,8 @@
         <ol class="steps">
           <li><span>Requirements</span><p>I talk to the people who will use the app and turn what they need into a data model and a plan.</p></li>
           <li><span>Database</span><p>Postgres schema, migrations and row-level security, so each role reads and writes exactly the rows it should.</p></li>
-          <li><span>Server and edge</span><p>Sensitive logic lives in Edge Functions and Cloudflare Workers: grading, session checks, throttling and security headers.</p></li>
+          <li><span>Server and integrations</span><p>Sensitive logic stays on the server, in Django, Edge Functions or Cloudflare Workers, along with integrations like the ETA e-invoicing API.</p></li>
+          <li><span>Data</span><p>Python pipelines that read Arabic and English PDFs, map them to a clean schema and check the numbers before anything is imported.</p></li>
           <li><span>Interface</span><p>React and TypeScript interfaces in Arabic and English, right-to-left included, that work offline as installable PWAs.</p></li>
           <li><span>Test and ship</span><p>Automated tests at every layer run in GitHub Actions, and the deploy is blocked until everything passes.</p></li>
         </ol>
@@ -197,14 +223,15 @@
           <h2>Build. Test. Ship.</h2>
         </header>
         <div class="about">
-          <p>I'm a full-stack developer and Computer Science student at E-JUST in Alexandria, Egypt, graduating in December 2027. I build web apps end to end in React, TypeScript and Supabase, with one in daily use since September 2026.</p>
-          <p>Testing is how I make sure they hold up: more than 2,900 automated tests across my projects, including red-team suites that try to break access control on purpose. I use AI coding tools like Claude Code to move faster, while owning the architecture, the decisions and the quality.</p>
+          <p>I'm a full-stack developer and Computer Science student at E-JUST in Alexandria, Egypt, graduating in December 2027. I build business apps for the Egyptian and Arabic-speaking market: an accounting and ETA e-invoicing system for a tax firm, a pipeline that turns financial-statement PDFs into clean data, and a bilingual finance app in daily use since September 2026.</p>
+          <p>Testing is how I make sure they hold up: more than 3,500 automated tests across my projects, including red-team suites that try to break access control on purpose. I use AI coding tools like Claude Code to move faster, while owning the architecture, the decisions and the quality.</p>
 
           <dl class="facts">
             <div><dt>Languages</dt><dd>TypeScript, JavaScript, SQL, Python, C++, Dart, HTML/CSS</dd></div>
             <div><dt>Front end</dt><dd>React, Vite, Tailwind CSS, TanStack Query, offline-first PWAs, right-to-left (Arabic) interfaces</dd></div>
-            <div><dt>Back end and data</dt><dd>Supabase (Postgres, row-level security, Edge Functions, Realtime), Cloudflare Workers, Node.js, database migrations</dd></div>
-            <div><dt>Testing and DevOps</dt><dd>Vitest, pgTAP, Testing Library, pytest, red-team security tests, GitHub Actions CI/CD, Git</dd></div>
+            <div><dt>Back end and data</dt><dd>Supabase (Postgres, row-level security, Edge Functions, Realtime), Django, FastAPI, Cloudflare Workers, Node.js, database migrations</dd></div>
+            <div><dt>Data and automation</dt><dd>Python, Pydantic, PDF extraction (pdfplumber), Tesseract OCR, Arabic text processing, ETA e-invoicing API</dd></div>
+            <div><dt>Testing and DevOps</dt><dd>Vitest, pgTAP, Testing Library, pytest, Django test suite, red-team security tests, GitHub Actions CI/CD, Git</dd></div>
             <div><dt>Publication</dt><dd>Co-author, "AraBIRD: A Modern Standard Arabic Adaptation of BIRD for Text-to-SQL over English Schemas," IEEE NILES 2026 (accepted)</dd></div>
             <div><dt>Training</dt><dd>DEPI, Mobile App Development Intern, 2024 · ITI, iOS Development Intern (Swift), 2024</dd></div>
             <div><dt>Spoken</dt><dd>Arabic (native), English (professional)</dd></div>

@@ -46,7 +46,7 @@ vendor/
 
 ### 1. Content first
 
-The copy comes from my resume and GitHub profile README, written for full-stack roles: what each app does and how it is secured and tested, with real numbers (2,900+ tests, 91% coverage, 532 pgTAP policy tests). The page leads with the work and keeps everything else short.
+The copy comes from my resume and GitHub profile README, written for full-stack roles: what each app does and how it is secured and tested, with real numbers (3,500+ tests, 91% coverage, 532 pgTAP policy tests). The page leads with the work and keeps everything else short.
 
 ### 2. Three design passes
 
