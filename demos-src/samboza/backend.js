@@ -29,16 +29,20 @@ export async function startBackend({ prelude, migrations, onStatus = () => {} })
   }
   const ready = persisted && (await db.query(`select to_regclass('public.families') is not null as ok`)).rows[0].ok;
   if (!ready) {
-    onStatus('Building the database from Samboza\'s migrations…');
+    const first = 'First visit only, this can take up to a minute.';
+    onStatus(`Building the database from Samboza's migrations… ${first}`);
     await db.exec(prelude);
+    let done = 0;
     for (const [name, sql] of migrations) {
+      done += 1;
+      onStatus(`Building the database: migration ${done} of ${migrations.length}… ${first}`);
       try {
         await db.exec(sql.replace(/create extension if not exists (pg_cron|pg_net)[^;]*;/gi, ''));
       } catch (e) {
         throw new Error(`Migration ${name} failed: ${e.message}`);
       }
     }
-    onStatus('Adding a made-up family and three months of records…');
+    onStatus(`Adding a made-up family and three months of records… ${first}`);
     await seed({ superuser: db, rpcAs, insertAs });
     try { localStorage.setItem(SCHEMA_READY_KEY, '1'); } catch { /* ignore */ }
   }
