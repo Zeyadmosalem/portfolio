@@ -181,6 +181,22 @@ p { margin: 0; }
 .app__body > p { margin-top: 12px; color: var(--ink-2); }
 .app__body .actions { margin-top: auto; padding-top: 24px; }
 
+/* PROJECTS */
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.project { --c: var(--line-strong); background: var(--surface); display: flex; flex-direction: column; box-shadow: var(--frame); transition: transform 120ms steps(2), box-shadow 120ms steps(2); }
+.project:hover { --c: var(--red-hi); transform: translate(-3px, -3px); box-shadow: var(--frame), 6px 6px 0 0 var(--red-lo); }
+.project__shot { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; background: var(--bg); border-bottom: var(--u) solid var(--c); }
+.project__shot--svg { object-fit: contain; padding: 8px; }
+.project__body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+.project__body h3 { font-size: 21px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.project__body > p { margin-top: 10px; color: var(--ink-2); font-size: 15px; }
+.project__meta { font: 400 11px/1.6 var(--tiny); text-transform: uppercase; color: var(--ink-3, var(--ink-2)); }
+.project__body .actions { margin-top: auto; padding-top: 18px; }
+.project .pill { height: 38px; padding: 0 14px; font-size: 12px; }
+@media (max-width: 1100px) { .projects { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
+@media (hover: none) { .project:hover { transform: none; box-shadow: var(--frame); } }
+
 /* APPROACH */
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 48px 170px 1fr; gap: 16px; padding: 20px 16px; border-bottom: var(--u) dotted var(--line); }

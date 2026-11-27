@@ -1,0 +1,12 @@
+import{a as e,n as t,r as n,t as r}from"./backend-CRlBkXs0.js";var i=`
+#demo-bar{position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#140606;color:#f5dede;
+  border-top:2px solid #c0262f;font:13px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 12px;
+  display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:center}
+#demo-bar b{color:#ff6b74}
+#demo-bar button{font:inherit;background:#2a0d0d;color:#f5dede;border:1px solid #6b1f24;border-radius:6px;padding:3px 9px;cursor:pointer}
+#demo-bar button:hover,#demo-bar button[aria-pressed=true]{background:#c0262f;border-color:#c0262f;color:#fff}
+#demo-bar a{color:#ff9aa0}
+body{padding-bottom:70px}
+`,a=`samboza-auth`;function o(){try{return JSON.parse(localStorage.getItem(a)??`null`)?.user?.email??null}catch{return null}}async function s(e){let t=await(await fetch(`${r}/auth/v1/token?grant_type=password`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({email:e,password:`demo`})})).json();localStorage.setItem(a,JSON.stringify(t)),location.hash=`#/`,location.reload()}async function c(){let r=document.getElementById(`demo-bar`),i=o(),a=(await t()).find(e=>e.email===i);r.innerHTML=`<span><b>Demo</b> · a made-up family, stored only in your browser${a?` · you are ${a.display_name}`:``}</span><span>Be:</span>`;for(let t of e.filter(e=>e.email)){let e=document.createElement(`button`);e.type=`button`,e.textContent=`${t.name} (${t.label})`,e.setAttribute(`aria-pressed`,String(i===t.email)),e.onclick=()=>s(t.email),r.appendChild(e)}let c=document.createElement(`button`);c.type=`button`,c.textContent=`Reset demo`,c.onclick=async()=>{await n(),location.hash=`#/`,location.reload()},r.appendChild(c);let l=document.createElement(`a`);l.href=`../../#projects`,l.textContent=`Back to portfolio`,r.appendChild(l)}var l=document.createElement(`style`);l.textContent=i+`
+#demo-loading{position:fixed;inset:0;display:grid;place-content:center;justify-items:center;gap:10px;background:#0e101b;color:#e8e8f0;font:15px system-ui,sans-serif;text-align:center;padding:16px}
+#demo-loading small{color:#9a9ab0}`,document.head.appendChild(l);var u=document.createElement(`div`);u.id=`demo-bar`,u.setAttribute(`role`,`region`),u.setAttribute(`aria-label`,`Demo controls`),document.body.appendChild(u),c();

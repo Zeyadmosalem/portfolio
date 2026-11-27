@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Samboza · demo</title><meta name="robots" content="noindex">
+
+    
+    <!-- The vector first: crisp at any tab size. The PNG stays for browsers
+         that do not take an SVG favicon. Both come from scripts/make-icons.mjs. -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+    <!-- iOS reads this and ignores the manifest entirely. -->
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Samboza" />
+    <!-- The status bar, matched to the top bar underneath it in each theme.
+         One fixed colour here would leave a white strip above a dark app. -->
+    <meta name="theme-color" content="#f3f3f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e101b" media="(prefers-color-scheme: dark)" />
+    <script>
+      // Apply the remembered theme before first paint, so a dark-mode phone
+      // never flashes white on open.
+      (function () {
+        try {
+          var t = localStorage.getItem('samboza-theme')
+          if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t
+          var l = localStorage.getItem('samboza-lang')
+          if (l === 'ar') { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl' }
+        } catch (e) { /* private mode */ }
+      })()
+    </script>
+    <script type="module" crossorigin src="./assets/index-DCczHWQ-.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-CbXtAM7H.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-VBDAOXYI-8bEITGqV.js">
+    <link rel="modulepreload" crossorigin href="./assets/backend-CRlBkXs0.js">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

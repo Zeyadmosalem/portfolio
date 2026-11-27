@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>.tile{fill:#40466d}@media (prefers-color-scheme:dark){.tile{fill:#464c77}}</style>
+  <rect class="tile" width="100" height="100" rx="22"/>
+  <svg x="17" y="17" width="66" height="66" viewBox="15 15 70 70"><path d="M65.64 35 C62.7 29 58.06 27 53.06 27 C45.06 27 39.17 32 38.03 38.5 C35.65 52 64.53 47 61.97 61.5 C60.74 68.5 53.94 73 45.94 73 C38.94 73 34.47 70 32.36 65 M56.17 15 L54.23 26 M45.77 74 L43.83 85" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="butt"/></svg>
+</svg>

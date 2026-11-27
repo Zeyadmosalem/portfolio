@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="vendor/glisse/glisse.css" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -30,7 +30,8 @@
       <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
       <nav id="nav-links" class="nav__links" aria-label="Main">
         <a href="#work">Work</a>
-        <a href="#apps">Apps</a>
+        <a href="#apps">Demos</a>
+        <a href="#projects">Projects</a>
         <a href="#approach">How I build</a>
         <a href="#about">About</a>
         <a href="#contact" class="pill pill--dark">Contact</a>
@@ -50,7 +51,7 @@
           <a class="pill pill--dark" href="#work">See the work <span class="arrow" aria-hidden="true">→</span></a>
           <a class="pill" href="#contact">Get in touch</a>
         </div>
-        <p class="status"><span class="status__dot" aria-hidden="true"></span>Available for remote freelance and part-time work, up to 20 hours a week</p>
+        <p class="status"><span class="status__dot" aria-hidden="true"></span>Available for remote freelance and part-time work, up to 30 hours a week</p>
       </div>
       <div class="altar" aria-hidden="true">
         <canvas class="altar__fx"></canvas>
@@ -106,7 +107,7 @@
             </a>
           </li>
           <li class="work__item">
-            <a class="work__link" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">
+            <a class="work__link" href="demos/nc-spark/" target="_blank" rel="noopener">
               <span class="work__index">03</span>
               <div class="work__main">
                 <h3>NC Spark</h3>
@@ -114,11 +115,11 @@
                 <p class="work__body">Trainee, trainer, supervisor and admin portals with seven activity types, all authored in the browser. Quizzes are graded in Edge Functions against an answer key no browser role can read, and column grants, row-level security and triggers block privilege escalation. A Cloudflare Worker gates the site, throttles sign-ins and sets security headers. 1,828 tests at 91% coverage, including red-team suites.</p>
                 <p class="work__meta">React 19 · Vite · Supabase / Postgres 17 · Edge Functions · TanStack Query · Cloudflare Workers · Vitest</p>
               </div>
-              <span class="work__go">Repository <span class="arrow" aria-hidden="true">↗</span></span>
+              <span class="work__go">Live demo <span class="arrow" aria-hidden="true">↗</span></span>
             </a>
           </li>
           <li class="work__item">
-            <a class="work__link" href="mailto:zeyadmosalem@gmail.com?subject=Samboza%20walkthrough">
+            <a class="work__link" href="demos/samboza/" target="_blank" rel="noopener">
               <span class="work__index">04</span>
               <div class="work__main">
                 <h3>Samboza <span class="tag">In production</span></h3>
@@ -126,7 +127,7 @@
                 <p class="work__body">An installable PWA with a full right-to-left layout, a double-entry ledger with an audit trail, offline writes through an idempotent outbox, and Excel export. I ran the whole cycle: user interviews, data model, security review, tests and deploy. Postgres row-level security enforces access across four roles, proven by 532 pgTAP tests plus 578 front-end tests in CI.</p>
                 <p class="work__meta">React 19 · TypeScript · Vite · Supabase / Postgres · Cloudflare Workers · GitHub Actions</p>
               </div>
-              <span class="work__go">Ask for a walkthrough <span class="arrow" aria-hidden="true">→</span></span>
+              <span class="work__go">Live demo <span class="arrow" aria-hidden="true">↗</span></span>
             </a>
           </li>
           <li class="work__item">
@@ -149,9 +150,9 @@
     <section id="apps" class="section section--tint">
       <div class="wrap">
         <header class="section__head">
-          <p class="label">Try the apps</p>
+          <p class="label">Live demos</p>
           <h2>Open them and look around</h2>
-          <p class="section__sub">Real apps, not mockups. Both run behind a sign-in, so ask and I'll get you in.</p>
+          <p class="section__sub">The real apps, running on made-up data in your browser. Pick a role from the bar at the bottom and click through. Nothing you do reaches a real server, and the live versions stay private.</p>
         </header>
 
         <div class="apps">
@@ -167,28 +168,118 @@
             <div class="app__body">
               <div class="app__title">
                 <h3>NC Spark</h3>
-                <span class="tag tag--live">Live</span>
+                <span class="tag tag--live">Demo</span>
               </div>
-              <p>Compliance training for warehouse teams: courses, quizzes graded on the server, XP and badges. The live site sits behind a sign-in gate with no public sign-up. Ask for a trainee login and take a course yourself.</p>
+              <p>Compliance training with four portals. Sign in as a trainee and take a quiz, then switch to the trainer and mark it. Quizzes are graded by the app's own server code, running in your browser against demo data.</p>
               <div class="actions">
-                <a class="pill pill--dark" href="mailto:zeyadmosalem@gmail.com?subject=NC%20Spark%20demo%20login">Ask for a demo login</a>
+                <a class="pill pill--dark" href="demos/nc-spark/" target="_blank" rel="noopener">Try the demo <span class="arrow" aria-hidden="true">↗</span></a>
                 <a class="pill" href="https://github.com/Zeyadmosalem/nc-spark" target="_blank" rel="noopener">Code</a>
               </div>
             </div>
           </article>
 
           <article class="app">
-            <div class="app__shot app__shot--private" aria-hidden="true">
-              <img src="assets/apps/samboza-icon.png" alt="" width="96" height="96" loading="lazy" />
+            <div class="app__shot app__gallery">
+              <img class="shot shot--main" src="assets/apps/samboza-dashboard.webp" data-glisse-big="assets/apps/samboza-dashboard.webp" rel="samboza" title="Admin dashboard, demo family" alt="Samboza dashboard with a made-up family's figures" width="1200" height="750" loading="lazy" />
+              <span class="shot__hint">Click to enlarge</span>
             </div>
             <div class="app__body">
               <div class="app__title">
                 <h3>Samboza</h3>
-                <span class="tag">Private</span>
+                <span class="tag tag--live">Demo</span>
               </div>
-              <p>A household finance app with a double-entry ledger, Arabic and English, and offline writes. It holds a real family's money, so it isn't open to the public. I'm happy to walk you through it on a call.</p>
+              <p>The family finance app, with a made-up family. Be the admin, a member with a private book, or the driver, and watch Postgres row-level security decide what each one sees. The real database rules run in your browser; the family's own app and data stay private.</p>
               <div class="actions">
-                <a class="pill pill--dark" href="mailto:zeyadmosalem@gmail.com?subject=Samboza%20walkthrough">Ask for a walkthrough</a>
+                <a class="pill pill--dark" href="demos/samboza/" target="_blank" rel="noopener">Try the demo <span class="arrow" aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="label">More projects</p>
+          <h2>Side projects and coursework</h2>
+          <p class="section__sub">Smaller things I built to learn, most of them playable or usable right here.</p>
+        </header>
+
+        <div class="projects">
+          <article class="project">
+            <img class="project__shot" src="assets/apps/gpa-manager.webp" alt="E-JUST GPA Manager semester page with sample marks" width="1200" height="750" loading="lazy" />
+            <div class="project__body">
+              <h3>E-JUST GPA Manager <span class="tag">In progress</span></h3>
+              <p>A GPA and degree planner for E-JUST students: weighted marks, the CSC study plan and "what do I need on the final" answers. Local-first, with a tested TypeScript engine.</p>
+              <p class="project__meta">Next.js · React · TypeScript · Vitest</p>
+              <div class="actions">
+                <a class="pill pill--dark" href="demos/gpa-manager/" target="_blank" rel="noopener">Try it <span class="arrow" aria-hidden="true">↗</span></a>
+                <a class="pill" href="https://github.com/Zeyadmosalem/ejust-gpa-manager" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="project__shot" src="assets/apps/expedition.webp" alt="Expedition: an isometric pixel-art alien shooter" width="1200" height="750" loading="lazy" />
+            <div class="project__body">
+              <h3>Expedition</h3>
+              <p>An isometric pixel-art shooter. Every map is built by a constraint solver, and the aliens hunt you with BFS, Greedy search and A*.</p>
+              <p class="project__meta">Python · pygame-ce · pytest</p>
+              <div class="actions">
+                <a class="pill pill--dark" href="demos/expedition/" target="_blank" rel="noopener">Play in the browser <span class="arrow" aria-hidden="true">↗</span></a>
+                <a class="pill" href="https://github.com/Zeyadmosalem/Expedition" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="project__shot project__shot--svg" src="https://raw.githubusercontent.com/Zeyadmosalem/expedition-contrib/output/expedition-contrib-dark.svg" alt="A pixel skull hero hopping across a GitHub contribution calendar" width="1200" height="750" loading="lazy" />
+            <div class="project__body">
+              <h3>expedition-contrib</h3>
+              <p>My GitHub contribution calendar as an animated isometric platformer. A daily GitHub Action redraws it; pure CSS animation, so it plays inside GitHub's image sandbox.</p>
+              <p class="project__meta">Python · SVG · GitHub Actions</p>
+              <div class="actions">
+                <a class="pill" href="https://github.com/Zeyadmosalem/expedition-contrib" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="project__shot" src="assets/apps/cafe.webp" alt="Cafe website home page" width="1200" height="750" loading="lazy" />
+            <div class="project__body">
+              <h3>Cafe website</h3>
+              <p>A static cafe site with a mood-based drink recommender and a small game, in plain HTML, CSS and JavaScript.</p>
+              <p class="project__meta">HTML · CSS · JavaScript</p>
+              <div class="actions">
+                <a class="pill pill--dark" href="https://zeyadmosalem.github.io/Cafe-Website-Project/" target="_blank" rel="noopener">Visit the site <span class="arrow" aria-hidden="true">↗</span></a>
+                <a class="pill" href="https://github.com/Zeyadmosalem/Cafe-Website-Project" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="project__shot" src="assets/apps/arabic-doc-qa.webp" alt="Arabic question answered with page citations" width="1200" height="750" loading="lazy" />
+            <div class="project__body">
+              <h3>arabic-doc-qa</h3>
+              <p>Ask a PDF a question in Arabic or English and get an answer with page citations. FastAPI back end, React front end with a right-to-left interface.</p>
+              <p class="project__meta">Python · FastAPI · Qdrant · React</p>
+              <div class="actions">
+                <a class="pill pill--dark" href="https://arabic-doc-qa.vercel.app" target="_blank" rel="noopener">Try it <span class="arrow" aria-hidden="true">↗</span></a>
+                <a class="pill" href="https://github.com/Zeyadmosalem/arabic-doc-qa" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="project__shot" src="assets/apps/neuroforge.webp" alt="NEUROFORGE: four search agents playing the same level" width="1200" height="750" loading="lazy" />
+            <div class="project__body">
+              <h3>NEUROFORGE <span class="tag">Course project</span></h3>
+              <p>A neon platformer where BFS, DFS, A* and Greedy agents race on levels generated by a constraint solver. Expedition started as one of its modes.</p>
+              <p class="project__meta">Python · pygame · NumPy</p>
+              <div class="actions">
+                <a class="pill" href="https://github.com/Zeyadmosalem/NEUROFORGE" target="_blank" rel="noopener">Code</a>
               </div>
             </div>
           </article>
@@ -197,7 +288,7 @@
     </section>
 
     <!-- APPROACH -->
-    <section id="approach" class="section">
+    <section id="approach" class="section section--tint">
       <div class="wrap split">
         <header class="section__head">
           <p class="label">How I build</p>
@@ -215,7 +306,7 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section section--tint">
+    <section id="about" class="section">
       <div class="wrap split">
         <header class="section__head">
           <p class="label">About</p>
@@ -230,6 +321,7 @@
             <div><dt>Front end</dt><dd>React, Vite, Tailwind CSS, TanStack Query, offline-first PWAs, right-to-left (Arabic) interfaces</dd></div>
             <div><dt>Back end and data</dt><dd>Supabase (Postgres, row-level security, Edge Functions, Realtime), Django, FastAPI, Cloudflare Workers, Node.js, database migrations</dd></div>
             <div><dt>Data and automation</dt><dd>Python, Pydantic, PDF extraction (pdfplumber), Tesseract OCR, Arabic text processing, ETA e-invoicing API</dd></div>
+            <div><dt>Design</dt><dd>Figma: wireframes, prototypes and handing designs to code</dd></div>
             <div><dt>Testing and DevOps</dt><dd>Vitest, pgTAP, Testing Library, pytest, Django test suite, red-team security tests, GitHub Actions CI/CD, Git</dd></div>
             <div><dt>Publication</dt><dd>Co-author, "AraBIRD: A Modern Standard Arabic Adaptation of BIRD for Text-to-SQL over English Schemas," IEEE NILES 2026 (accepted)</dd></div>
             <div><dt>Training</dt><dd>ITI, iOS Development Intern (Swift), Aug–Sep 2025 · DEPI, Mobile App Development Intern, Apr–Oct 2024</dd></div>
